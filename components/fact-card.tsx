@@ -14,8 +14,8 @@ const iconMap = {
 };
 const FactCard = ({ src, fact, description }: { src: string | React.ElementType; fact: string; description: string; }) => {
     return (
-        <motion.figure className="relative overflow-hidden group bg-slate-50 w-full rounded-t-2xl">
-            <div className="relative flex items-center justify-center h-[150px] w-[200px]">
+        <motion.figure className="relative overflow-hidden group bg-slate-50 w-full h-full rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300">
+            <div className="relative flex items-center justify-center h-full min-h-[160px] w-full p-6">
                 {/* If src is a string and matches an icon, render the icon. Otherwise, treat as image path. */}
                 {typeof src === "string" && iconMap[src as keyof typeof iconMap] ? (
                     React.createElement(iconMap[src as keyof typeof iconMap], { size: 50, className: "text-slate-200" })
@@ -31,8 +31,8 @@ const FactCard = ({ src, fact, description }: { src: string | React.ElementType;
                     React.createElement(src, { size: 50, className: "text-slate-200" })
                 )}
                 <div className="absolute bottom-0 left-0 p-4 ">
-                    <h3 className="ext-slate-900 text-xl font-semibold">{fact}</h3>
-                    <p className="text-slate-800 text-sm">{description}</p>
+                    <h3 className="ext-slate-900 text-2xl font-semibold">{fact}</h3>
+                    <p className="text-slate-800 text-lg">{description}</p>
                 </div>
             </div>
         </motion.figure>

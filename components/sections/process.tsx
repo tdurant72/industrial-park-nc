@@ -12,7 +12,7 @@ const Process = () => {
                 <div className="hidden gap-6">
                     <div>
                         <h3>1</h3>
-                        <h4>Talk to one of our experts</h4>
+                        <h4>Request an Executive Site Briefing</h4>
                         <p>Whether it&apos;s a production facility or corporate headquarters, we&apos;ll help you find the perfect space</p>
                     </div>
                     <div>

@@ -1,4 +1,3 @@
-import { Marquee } from "@/components/ui/marquee";
 import FactCard from "@/components/fact-card";
 import BentoCard from "@/components/bento-card";
 import TestimonialCard from "@/components/testimonial-card";
@@ -8,7 +7,7 @@ const stats = [
     { src: "IoMdPeople", fact: "5.2M", description: "Skilled Labor Force" },
     { src: "RiMoneyDollarCircleFill", fact: "5%", description: "Below National Cost of Living" },
     { src: "MdPrecisionManufacturing", fact: "#1", description: "Largest Manufacturing Workforce in the Southeast" },
-    { src: "IoIosAirplane", fact: "11,500", description: "Square Foot Runway at NCGTP" }
+    { src: "IoIosAirplane", fact: "11,500", description: "Foot Linear Runway" }
 ];
 
 
@@ -78,19 +77,34 @@ const BusinessAdvantages = () => {
 
                 </div>
             </div>
-            <div className="flex items-end justify-center h-20 md:h-44 w-full md:w-5xl 2xl:w-7xl mx-auto px-3 md:px-0 overflow-hidden">
-                <div className="h-full w-[50%] md:w-[25%]">
-                    <div className="bg-sky-600 h-full w-full rounded-t-2xl ">
-                        <div className="p-2 md:p-4 flex flex-col gap-2">
-                            <h3 className="text-slate-50 text-lg md:text-2xl font-semibold md:font-black">Lowest Corporate Tax Rate in the US</h3>
-
+            <div className="container mx-auto px-6 pb-20 md:w-5xl 2xl:w-7xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Path to 0% Tax Card */}
+                    <div className="lg:col-span-1 bg-teal-800 text-white rounded-3xl p-8 flex flex-col shadow-xl relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-amber-400/20 transition-colors duration-500" />
+                        <h3 className="text-2xl font-bold mb-2">Path to 0% Corporate Tax</h3>
+                        <p className="text-neutral-100/80 text-base mb-4 leading-relaxed">
+                            North Carolina&apos;s 2030 Vision: Providing long-term operational stability and the lowest tax burden in the US.
+                        </p>
+                        <div className="space-y-4 mt-auto">
+                            {[
+                                { year: "2025", rate: "2.25%" },
+                                { year: "2026", rate: "2.00%" },
+                                { year: "2028", rate: "1.00%" },
+                                { year: "2030", rate: "0.00%", highlight: true },
+                            ].map((item) => (
+                                <div key={item.year} className={`flex justify-between items-center py-2 border-b border-teal-700/50 ${item.highlight ? 'text-amber-400 font-bold' : ''}`}>
+                                    <span className="text-lg opacity-80">{item.year}</span>
+                                    <span className="text-2xl">{item.rate}</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
-                </div>
-                <div className="h-full w-[50%] md:w-[75%] flex items-end">
-                    <Marquee pauseOnHover className="[--duration:90s] pb-0">
+
+                    {/* Other Stats Grid */}
+                    <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {stats.map((stat, index) => (
-                            <div key={index} className="mx-1 min-w-[200px] cursor-pointer">
+                            <div key={index} className="h-full">
                                 <FactCard
                                     src={stat.src}
                                     fact={stat.fact}
@@ -98,7 +112,7 @@ const BusinessAdvantages = () => {
                                 />
                             </div>
                         ))}
-                    </Marquee>
+                    </div>
                 </div>
             </div>
         </section>

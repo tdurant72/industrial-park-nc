@@ -9,79 +9,14 @@ import Image from "next/image";
 import { properties } from "@/lib/properties";
 import { WordPullUp } from "@/components/ui/word-up";
 
-interface Attribute {
-    attributeName: string;
-    value: string;
-}
-
-interface AttributeGroup {
-    groupName: string;
-    attributes: Attribute[];
-}
-
-interface Property {
-    id: number;
-    name: string;
-    specifics: {
-        siteAttributes?: AttributeGroup[];
-        details: {
-            siteAttributes?: AttributeGroup[];
-            cityName: string;
-            stateAbbreviation: string;
-            minSize: number;
-            subTypes?: string[];
-            CustomerDefinedAttributes?: string;
-            description?: string;
-            lng: number;
-            lat: number;
-        };
-        photos?: string[];
-        attachments?: { url: string }[];
-        contact?: {
-            name: string;
-            company: string;
-            cell?: string;
-            email: string;
-        };
-    };
-}
-
+import { IndustrialProperty } from "@/lib/properties";
 
 interface PropertyDetailsDrawerProps {
-    property: Property;
+    property: IndustrialProperty;
     onClose: () => void;
 }
 
-// Helper to get attribute value by name from a group
-function getAttributeValue(property: Property, attributeName: string): string {
-    const siteAttributes = property?.specifics?.siteAttributes;
-    if (!Array.isArray(siteAttributes)) return "N/A";
-    const group = siteAttributes.find(
-        (group: AttributeGroup) => group.attributes?.some((attr: Attribute) => attr.attributeName === attributeName)
-    );
-    const attribute = group?.attributes?.find((attr: Attribute) => attr.attributeName === attributeName);
-    return attribute?.value || "N/A";
-}
-
 const PropertyDetailsDrawer: React.FC<PropertyDetailsDrawerProps> = ({ property, onClose }) => {
-    // Get Transportation attributes
-    console.log('siteAttributes:', property.specifics.details.siteAttributes);
-
-    const transportationAttrs = property.specifics.details.siteAttributes?.find(
-        (g: AttributeGroup) => g.groupName === "Transportation"
-    )?.attributes || [];
-    console.log('transportationAttrs:', transportationAttrs);
-    const nearestAirport = getAttributeValue(property, "Nearest Airport");
-    const distanceToAirport = getAttributeValue(property, "Distance to Airport");
-    const port = getAttributeValue(property, "Port");
-    const distanceToPort = getAttributeValue(property, "Distance to Port");
-    const nearestInterstate = getAttributeValue(property, "Nearest Interstate");
-    const distanceToInterstate = getAttributeValue(property, "Distance to Interstate");
-    const electricProvider = getAttributeValue(property, "Electric Service Provider");
-    const gasProvider = getAttributeValue(property, "Natural Gas Provider");
-    const waterProvider = getAttributeValue(property, "Water Service Provider");
-    const sewerProvider = getAttributeValue(property, "Sewer Provider");
-
     return (
         <motion.div
             initial={{ x: "100%", opacity: 0 }}
@@ -92,16 +27,16 @@ const PropertyDetailsDrawer: React.FC<PropertyDetailsDrawerProps> = ({ property,
         >
             <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 p-4 text-2xl">×</button>
             <div className="mt-8">
-                <h2 className="text-2xl font-bold mb-4">{property.name}</h2>
-                {property.specifics.photos && property.specifics.photos.length > 0 && (
+                <h2 className="text-2xl font-bold mb-4">{property.title}</h2>
+                {property.photos && property.photos.length > 0 && (
                     <div className="mb-6">
                         <Carousel className="w-[90%] mx-auto">
                             <CarouselContent>
-                                {property.specifics.photos.map((photo: string, idx: number) => (
+                                {property.photos.map((photo: string, idx: number) => (
                                     <CarouselItem key={idx} className="flex items-center justify-center">
                                         <Image
                                             src={photo}
-                                            alt={`${property.name} photo ${idx + 1}`}
+                                            alt={`${property.title} photo ${idx + 1}`}
                                             width={500}
                                             height={300}
                                             className="w-full rounded-lg object-cover h-60"
@@ -115,41 +50,42 @@ const PropertyDetailsDrawer: React.FC<PropertyDetailsDrawerProps> = ({ property,
                     </div>
                 )}
                 <div className="mb-2 text-gray-600">
-                    <span className="font-semibold">{property.specifics.details.cityName}, {property.specifics.details.stateAbbreviation.trim()}</span>: {property.specifics.details.minSize / 43560} acres
+                    <span className="font-semibold">{property.acreage} acres</span> | <span className="font-semibold">{property.type}</span>
                 </div>
-                <div className="mb-2 text-gray-500">
-                    <span className="font-semibold">Zoning:</span> {property.specifics.details.subTypes?.join(', ') || 'N/A'} <br /> <span className="font-semibold">Runway Access:</span> {property.specifics.details.CustomerDefinedAttributes?.includes('Runway Access') ? 'Yes' : 'No'}
+                <div className="mb-4 text-gray-500 space-y-2">
+                    <div><span className="font-semibold">Zoning:</span> {property.zoning}</div>
+                    <div><span className="font-semibold">Shovel Ready:</span> {property.shovelReadyStatus}</div>
+                    <div><span className="font-semibold">Runway Access:</span> {property.logistics.runwayAccess}</div>
                 </div>
-                <div className="mb-2 text-gray-500">
-                    <span className="font-semibold">Nearest Airport:</span> {nearestAirport} ({distanceToAirport} mi) <br /> <span className="font-semibold">Nearest Port:</span> {port} ({distanceToPort} mi)
-                </div>
-                <div className="mb-2 text-gray-500">
-                    <span className="font-semibold">Nearest Interstate:</span> {nearestInterstate} ({distanceToInterstate} mi)
-                </div>
-                <div className="mb-2 text-gray-500 text-sm">
-                    <span className="font-semibold text-lg">Utilities:</span><br />
-                    <div className="flex flex-wrap gap-2"><h4 className="text-base font-medium">Electric: {electricProvider},</h4> <h4 className="text-base font-medium">Gas: {gasProvider},</h4> <h4 className="text-base font-medium">Water: {waterProvider},</h4> <h4 className="text-base font-medium">Sewer: {sewerProvider}</h4></div>
 
+                <div className="mb-6">
+                    <h3 className="text-lg font-bold text-slate-800 border-b pb-1 mb-2">Key Utilities</h3>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-gray-600">
+                        <div><span className="font-semibold">Power:</span> {property.utilities.power}</div>
+                        <div><span className="font-semibold">Water:</span> {property.utilities.water}</div>
+                        <div><span className="font-semibold">Fiber:</span> {property.utilities.fiber}</div>
+                        <div><span className="font-semibold">Sewer:</span> {property.utilities.sewer}</div>
+                    </div>
                 </div>
-                <div className="mb-4 text-gray-700 text-base">
-                    {property.specifics.details.description}
+
+                <div className="mb-6 text-gray-700 text-base leading-relaxed">
+                    {property.description}
                 </div>
-                <div className="flex gap-2 mb-4">
-                    {property.specifics.attachments?.[0]?.url && (
-                        <Button size="sm" asChild>
-                            <a href={property.specifics.attachments[0].url} target="_blank" rel="noopener noreferrer">Download PDF</a>
-                        </Button>
-                    )}
-                    {property.specifics.contact?.email && (
-                        <Button size="sm" variant="outline" asChild>
-                            <a href={`mailto:${property.specifics.contact.email}?subject=Inquiry about ${property.name}`}>Contact Broker</a>
-                        </Button>
-                    )}
+
+                <div className="flex gap-2 mb-8">
+                    <Button size="sm" asChild>
+                        <a href={property.dossierUrl} target="_blank" rel="noopener noreferrer">Download PDF</a>
+                    </Button>
+                    <Button size="sm" variant="outline" asChild>
+                        <a href={`mailto:${property.contact.email}?subject=Inquiry about ${property.title}`}>Contact Broker</a>
+                    </Button>
                 </div>
-                <div className="mt-2 text-xs text-gray-500">
-                    Broker: {property.specifics.contact?.name} ({property.specifics.contact?.company})<br />
-                    Phone: {property.specifics.contact?.cell}<br />
-                    Email: {property.specifics.contact?.email}
+
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 text-sm">
+                    <p className="font-bold text-slate-800 mb-1">Contact: {property.contact.name}</p>
+                    <p className="text-gray-500">{property.contact.company}</p>
+                    {property.contact.cell && <p className="text-gray-500">Cell: {property.contact.cell}</p>}
+                    <p className="text-blue-600 truncate">{property.contact.email}</p>
                 </div>
             </div>
         </motion.div>
@@ -157,7 +93,7 @@ const PropertyDetailsDrawer: React.FC<PropertyDetailsDrawerProps> = ({ property,
 };
 
 const MapSection: React.FC = () => {
-    const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
+    const [selectedProperty, setSelectedProperty] = useState<IndustrialProperty | null>(null);
 
     return (
         <section id='site-selection' className="flex flex-col gap-4 items-center overflow-hidden  p-0 py-[8vh] bg-radial-[at_25%_25%] from-slate-50 to-slate-200 to-75% h-full md:h-screen">
@@ -171,24 +107,24 @@ const MapSection: React.FC = () => {
             <Card className="h-[75vh] md:w-5xl 2xl:w-7xl mx-auto p-0 overflow-hidden">
                 {/* 35.33091811544694, -77.60923274711917 */}
                 <Map center={[-77.60923274711917, 35.33091811544694]} zoom={13}>
-                    {properties.map((place: Property) => (
+                    {properties.map((place: IndustrialProperty) => (
                         <MapMarker
                             key={place.id}
-                            longitude={place.specifics.details.lng}
-                            latitude={place.specifics.details.lat}
+                            longitude={place.coordinates.lng}
+                            latitude={place.coordinates.lat}
                             onClick={() => setSelectedProperty(place)}
                         >
                             <MarkerContent>
                                 <div className="size-5 rounded-full shadow-lg cursor-pointer hover:scale-110 transition-transform">
                                     <Image
                                         src="/images/ncgtp/gtp-marker-icon.svg"
-                                        alt={place.name}
+                                        alt={place.title}
                                         width={32}
                                         height={40}
                                         className="object-contain "
                                     />
                                 </div>
-                                <MarkerLabel position="bottom">{place.name}</MarkerLabel>
+                                <MarkerLabel position="bottom">{place.title}</MarkerLabel>
                             </MarkerContent>
                         </MapMarker>
                     ))}

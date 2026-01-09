@@ -2,49 +2,13 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Variants } from "framer-motion"
-import Image from "next/image"
 import { X } from "lucide-react"
 
 
-interface SiteAttribute {
-    attributeName: string;
-    value: string;
-}
-
-interface SiteAttributeGroup {
-    attributes: SiteAttribute[];
-}
-
-interface SiteContact {
-    name?: string;
-    title?: string;
-    company?: string;
-    email?: string;
-}
-
-interface SiteAttachment {
-    url: string;
-    label: string;
-}
-
-interface SiteSpecifics {
-    details?: {
-        description?: string;
-    };
-    photos?: string[];
-    siteAttributes?: SiteAttributeGroup[];
-    contact?: SiteContact;
-    attachments?: SiteAttachment[];
-    direction?: number;
-}
-
-interface SiteData {
-    name?: string;
-    specifics?: SiteSpecifics;
-}
+import { IndustrialProperty } from "@/lib/properties"
 
 interface ModalProps {
-    siteData: SiteData;
+    siteData: IndustrialProperty;
     onClose: () => void;
 }
 const variants: Variants = {
@@ -67,22 +31,14 @@ const Modal = ({ siteData, onClose }: ModalProps) => {
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
 
     const nextPhoto = () => {
-        setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % (siteData.specifics?.photos?.length || 1))
+        setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % (siteData.photos.length || 1))
     }
 
     const prevPhoto = () => {
         setCurrentPhotoIndex(
             (prevIndex) =>
-                (prevIndex - 1 + (siteData.specifics?.photos?.length || 1)) % (siteData.specifics?.photos?.length || 1),
+                (prevIndex - 1 + (siteData.photos.length || 1)) % (siteData.photos.length || 1),
         )
-    }
-
-    const getAttributeValue = (attributeName: string): string => {
-        const attribute: SiteAttribute | undefined = siteData.specifics?.siteAttributes
-            ?.find((group: SiteAttributeGroup) => group.attributes?.some((attr: SiteAttribute) => attr.attributeName === attributeName))
-            ?.attributes?.find((attr: SiteAttribute) => attr.attributeName === attributeName);
-
-        return attribute?.value || "N/A";
     }
 
     return (
@@ -94,110 +50,138 @@ const Modal = ({ siteData, onClose }: ModalProps) => {
                 className="fixed inset-0 bg-slate-100/50 backdrop-blur-md  flex items-center justify-center p-4 z-50">
                 <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
                     <div className="sticky top-0 bg-white z-10 flex justify-between items-center p-4 border-b">
-                        <h2 className="text-2xl font-bold text-[#2563eb]">{siteData.name || "Site Details"}</h2>
-                        <button onClick={onClose} className="text-gray-500 hover:text-gray-700 cursor-pointer">
+                        <div className="flex flex-col">
+                            <h2 className="text-2xl font-bold text-[#2563eb]">{siteData.title}</h2>
+                            <span className="text-sm text-slate-500 font-medium uppercase tracking-wider">{siteData.type} — {siteData.status}</span>
+                        </div>
+                        <button onClick={onClose} className="text-gray-500 hover:text-gray-700 cursor-pointer p-2">
                             <X size={24} />
                         </button>
                     </div>
 
                     <div className="p-6">
-                        <div className="mb-6">
-                            <h3 className="text-xl font-semibold text-[#2563eb] mb-2">Site Details</h3>
-                            <p className="text-[#64748b]">{siteData.specifics?.details?.description || "No description available."}</p>
-                        </div>
-
-                        <div className="mb-6">
-                            <h3 className="text-xl font-semibold text-gray-900 mb-2">Photo Gallery</h3>
-                            <div className="relative h-[256px]">
-                                <AnimatePresence initial={false} custom={siteData.specifics?.direction}>
+                        <div className="grid md:grid-cols-2 gap-8 mb-8">
+                            <div className="relative h-[300px]">
+                                <AnimatePresence initial={false}>
                                     <motion.img
-                                        src={siteData.specifics?.photos?.[currentPhotoIndex] || "/placeholder.svg"}
-                                        key={`Site photo ${currentPhotoIndex + 1}`}
+                                        src={siteData.photos[currentPhotoIndex] || "/placeholder.svg"}
+                                        key={currentPhotoIndex}
                                         alt={`Site photo ${currentPhotoIndex + 1}`}
-                                        width={800}
-                                        height={450}
-                                        className="absolute inset-0 w-full h-64 object-cover rounded"
+                                        className="absolute inset-0 w-full h-[300px] object-cover rounded-xl shadow-inner"
                                         variants={variants}
                                         initial="enter"
                                         animate="center"
                                         exit="exit"
-                                        custom={siteData.specifics?.direction}
                                     />
                                 </AnimatePresence>
-                                {/* <Image
-                                    src={siteData.specifics?.photos?.[currentPhotoIndex] || "/placeholder.svg"}
-                                    alt={`Site photo ${currentPhotoIndex + 1}`}
-                                    width={800}
-                                    height={450}
-                                    unoptimized
-                                    className="w-full h-64 object-cover rounded"
-                                /> */}
-                                {(siteData.specifics?.photos?.length || 0) > 1 && (
+                                {siteData.photos.length > 1 && (
                                     <>
                                         <button
                                             onClick={prevPhoto}
-                                            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow cursor-pointer"
+                                            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-lg hover:bg-white cursor-pointer z-20"
                                         >
                                             &lt;
                                         </button>
                                         <button
                                             onClick={nextPhoto}
-                                            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow cursor-pointer"
+                                            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-lg hover:bg-white cursor-pointer z-20"
                                         >
                                             &gt;
                                         </button>
                                     </>
                                 )}
                             </div>
-                        </div>
 
-                        <div className="relativegrid md:grid-cols-2 gap-6">
-                            <div>
-                                <h3 className="text-xl font-semibold text-gray-800 mb-2">Transportation</h3>
-                                <ul className="text-[#64748b]">
-                                    <li>Nearest Airport: {getAttributeValue("Nearest Airport")}</li>
-                                    <li>Distance to Airport: {getAttributeValue("Distance to Airport")}</li>
-                                    <li>Nearest Interstate: {getAttributeValue("Nearest Interstate")}</li>
-                                    <li>Distance to Interstate: {getAttributeValue("Distance to Interstate")}</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold text-gray-800 mb-2">Utilities</h3>
-                                <ul className="text-[#64748b]">
-                                    <li>Electric: {getAttributeValue("Electric Service Provider")}</li>
-                                    <li>Natural Gas: {getAttributeValue("Natural Gas Provider")}</li>
-                                    <li>Water: {getAttributeValue("Water Service Provider")}</li>
-                                    <li>Sewer: {getAttributeValue("Sewer Provider")}</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div className="mt-6">
-                            <h3 className="text-xl font-semibold text-gray-800 mb-2">Contact Information</h3>
-                            <div className="text-[#64748b]">
-                                <p>{siteData.specifics?.contact?.name || "N/A"}</p>
-                                <p>{siteData.specifics?.contact?.title || "N/A"}</p>
-                                <p>{siteData.specifics?.contact?.company || "N/A"}</p>
-                                <p>
-                                    Email:{" "}
-                                    {siteData.specifics?.contact?.email ? (
-                                        <a href={`mailto:${siteData.specifics.contact.email}`} className="text-blue-600 hover:underline">
-                                            {siteData.specifics.contact.email}
-                                        </a>
-                                    ) : (
-                                        "N/A"
-                                    )}
-                                </p>
-                            </div>
-                        </div>
-                        {
-                            siteData.specifics?.attachments?.[0]?.url && (
-                                <div className="mt-6">
-                                    <a className="bg-amber-400 hover:bg-amber-500 my-4 p-4  text-black no-underline rounded" href={`${siteData.specifics?.attachments[0]?.url}`} target="_blank">{`${siteData.specifics?.attachments[0].label}`}</a>
+                            <div className="flex flex-col justify-between">
+                                <div>
+                                    <h3 className="text-xl font-semibold text-slate-900 mb-2">Technical Overview</h3>
+                                    <p className="text-slate-600 leading-relaxed overflow-hidden h-36">
+                                        {siteData.description}
+                                    </p>
                                 </div>
-                            )
-                        }
+                                <div className="grid grid-cols-2 gap-4 mt-4">
+                                    <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                        <p className="text-xs text-slate-500 uppercase font-bold">Acreage</p>
+                                        <p className="text-lg font-semibold">{siteData.acreage} AC</p>
+                                    </div>
+                                    <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                        <p className="text-xs text-slate-500 uppercase font-bold">Max Build-Out</p>
+                                        <p className="text-lg font-semibold">{siteData.maxBuildOutSqFt.toLocaleString()} SF</p>
+                                    </div>
+                                </div>
+                                <a
+                                    href={siteData.dossierUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="mt-6 w-full py-4 bg-teal-700 hover:bg-teal-800 text-white font-bold rounded-xl text-center shadow-lg transition-all"
+                                >
+                                    Download Technical Dossier
+                                </a>
+                            </div>
+                        </div>
 
+                        <div className="grid md:grid-cols-3 gap-6 border-t pt-8">
+                            <div className="space-y-4">
+                                <h4 className="font-bold text-slate-900 border-b pb-2 flex items-center gap-2">
+                                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                    Utilities (Power Layer)
+                                </h4>
+                                <ul className="text-sm space-y-2 text-slate-600">
+                                    <li><span className="font-semibold text-slate-900">Power:</span> {siteData.utilities.power}</li>
+                                    <li><span className="font-semibold text-slate-900">Water:</span> {siteData.utilities.water}</li>
+                                    <li><span className="font-semibold text-slate-900">Natural Gas:</span> {siteData.utilities.gas}</li>
+                                    <li><span className="font-semibold text-slate-900">Dark Fiber:</span> {siteData.utilities.fiber}</li>
+                                    <li><span className="font-semibold text-slate-900">Sewer:</span> {siteData.utilities.sewer}</li>
+                                </ul>
+                            </div>
+
+                            <div className="space-y-4">
+                                <h4 className="font-bold text-slate-900 border-b pb-2 flex items-center gap-2">
+                                    <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
+                                    Logistics Connectivity
+                                </h4>
+                                <ul className="text-sm space-y-2 text-slate-600">
+                                    <li><span className="font-semibold text-slate-900">Runway Access:</span> {siteData.logistics.runwayAccess}</li>
+                                    <li><span className="font-semibold text-slate-900">Rail Ready:</span> {siteData.logistics.railAccess ? "Yes" : "No"}</li>
+                                    <li><span className="font-semibold text-slate-900">Highway:</span> {siteData.logistics.highwayAccess}</li>
+                                    <li><span className="font-semibold text-slate-900">Status:</span> {siteData.shovelReadyStatus}</li>
+                                </ul>
+                            </div>
+
+                            <div className="space-y-4">
+                                <h4 className="font-bold text-slate-900 border-b pb-2 flex items-center gap-2">
+                                    <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                                    Financial Incentives
+                                </h4>
+                                <ul className="text-sm space-y-2 text-slate-600">
+                                    <li><span className="font-semibold text-slate-900">FTZ #214 Status:</span> {siteData.incentives.ftzStatus ? "Qualified" : "N/A"}</li>
+                                    <li><span className="font-semibold text-slate-900">Tier Status:</span> {siteData.incentives.tierStatus}</li>
+                                    <li className="mt-2 p-2 bg-emerald-50 text-emerald-800 rounded border border-emerald-100 text-xs italic">
+                                        {siteData.incentives.taxNote}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 p-6 bg-slate-900 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-4">
+                            <div className="flex items-center gap-4">
+                                {siteData.contact.logoPath && <img src={siteData.contact.logoPath} alt="Logo" className="h-12 w-auto brightness-0 invert" />}
+                                <div className="text-white">
+                                    <p className="font-bold text-lg">{siteData.contact.name}</p>
+                                    <p className="text-slate-400 text-sm">{siteData.contact.title} | {siteData.contact.company}</p>
+                                </div>
+                            </div>
+                            <div className="flex gap-3">
+                                <a href={`mailto:${siteData.contact.email}`} className="px-6 py-3 bg-white hover:bg-slate-100 text-slate-900 font-bold rounded-lg transition-colors">
+                                    Email Contact
+                                </a>
+                                {siteData.contact.cell && (
+                                    <a href={`tel:${siteData.contact.cell}`} className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg transition-colors border border-slate-700">
+                                        Call: {siteData.contact.cell}
+                                    </a>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </motion.div>

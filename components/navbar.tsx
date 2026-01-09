@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence, useScroll, motion, useMotionValueEvent } from "framer-motion";
 import type { Variants } from "framer-motion";
 const links = [
-    { href: '/services', label: 'Advantages' },
+    { href: '/Infrastructure', label: 'Infrastructure' },
     { href: '/projects', label: 'Ecosystem' },
     { href: '/about', label: 'Partners' },
     { href: '/site-selection', label: 'Site Selection' },
@@ -99,11 +99,11 @@ const Navbar = () => {
                             ))
                         }
                         <button className="text-neutral-500 bg-transparent hover:text-slate-50 hover:bg-amber-700 cursor-pointer px-1.5 py-1.5 rounded-md transition-colors duration-200"
-                        onClick={()=>{
-                            document.getElementById('contact')?.scrollIntoView({
-                                behavior:"smooth"
-                            })
-                        }}
+                            onClick={() => {
+                                document.getElementById('contact')?.scrollIntoView({
+                                    behavior: "smooth"
+                                })
+                            }}
                         >
                             Contact
                         </button>
@@ -128,11 +128,11 @@ const Navbar = () => {
                             ))
                         }
                         <Link href="#contact" className="text-neutral-500 hover:text-amber-700"
-                        onClick={()=>{
-                            document.getElementById('contact')?.scrollIntoView({
-                                behavior:"smooth"
-                            })
-                        }}
+                            onClick={() => {
+                                document.getElementById('contact')?.scrollIntoView({
+                                    behavior: "smooth"
+                                })
+                            }}
                         >
                             Contact
                         </Link>

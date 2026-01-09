@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { PiPlayFill, PiPhoneFill } from "react-icons/pi";
+import { PiPlayFill } from "react-icons/pi";
+import { FaCalendarAlt } from "react-icons/fa";
 import { WordPullUp } from "@/components/ui/word-up";
 import NCGTPHeroVideo from "@/components/ncgtp-hero-video";
 import MotionButton from "@/components/motion/motion-button";
@@ -8,12 +9,13 @@ const Hero = () => {
         <section id="hero-section" className="flex flex-col gap-4 h-full md:h-[90vh] pt-[8vh] pb-0 w-full md:w-5xl 2xl:w-7xl mx-auto">
             <div className="flex flex-col md:flex-row gap-2 md:gap-6 h-full">
                 <div id="left" className="flex flex-col gap-4 items-center justify-center  md:basis-1/2 h-full">
-                    <h1 className="text-6xl md:text-[10vw] text-blue-950 text-shadow-xs text-shadow-blue-400">NCGTP<span className="hidden">North Carolina Global TransPark</span></h1>
-                    <div className="flex flex-col p-4 bg-neutral-100/30 backdrop-blur-xs rounded-t-2xl ">
-                        <h2 className="text-3xl md:text-4xl text-neutral-800 mb-6 font-bold">Relocate to NCGTP and unlock millions in performance-based incentives</h2>
-                        <h3 className="text-neutral-800 text-2xl md:text-3xl text-balance">North Carolina’s Global TransPark offers unmatched support for manufacturers ready to scale.</h3>
+
+                    <div className="flex flex-col p-4 md:p-8 bg-neutral-100/30 backdrop-blur-xs rounded-t-2xl ">
+                        <h1 className="text-xs md:text-base text-blue-950 text-shadow-xs text-shadow-blue-400 text-left">North Carolina Global TransPark<span className="hidden">North Carolina Global TransPark</span></h1>
+                        <h2 className="text-3xl md:text-4xl text-neutral-800 mb-6 font-bold">Scale Your Manufacturing on the East Coast’s Longest Runway.</h2>
+                        <h3 className="text-neutral-800 text-2xl md:text-3xl text-balance">Unlock millions in performance-based incentives at the North Carolina Global TransPark.</h3>
                         <button className="mt-6 bg-amber-500 text-neutral-50 backdrop-blur-sm px-4 py-2 rounded-lg text-lg font-medium hover:bg-white/90 hover:text-amber-700 transition-colors duration-200 cursor-pointer drop-shadow-xs drop-shadow-amber-900 w-fit self-start">
-                            Talk to one of our experts <PiPhoneFill className="inline-block ml-2" />
+                            Request an Executive Site Briefing <FaCalendarAlt className="inline-block ml-2" />
                         </button>
                     </div>
                 </div>

@@ -36,7 +36,7 @@ const ProcessClient = () => {
                 imgSrc="/images/ncgtp/site-card.webp"
                 imgAlt="Site card"
                 cardNumber="1"
-                title="Talk to one of our experts"
+                title="Request an Executive Site Briefing"
                 description="Whether it's a production facility or corporate headquarters, we'll help you find the perfect space"
                 variants={itemVariants(0)}
             />
