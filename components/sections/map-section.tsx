@@ -9,10 +9,41 @@ import Image from "next/image";
 import { properties } from "@/lib/properties";
 import { WordPullUp } from "@/components/ui/word-up";
 
+interface Attribute {
+    attributeName: string;
+    value: string;
+}
+
+interface AttributeGroup {
+    groupName: string;
+    attributes: Attribute[];
+}
+
 interface Property {
     id: number;
     name: string;
-    specifics: any;
+    specifics: {
+        siteAttributes?: AttributeGroup[];
+        details: {
+            siteAttributes?: AttributeGroup[];
+            cityName: string;
+            stateAbbreviation: string;
+            minSize: number;
+            subTypes?: string[];
+            CustomerDefinedAttributes?: string;
+            description?: string;
+            lng: number;
+            lat: number;
+        };
+        photos?: string[];
+        attachments?: { url: string }[];
+        contact?: {
+            name: string;
+            company: string;
+            cell?: string;
+            email: string;
+        };
+    };
 }
 
 
@@ -26,9 +57,9 @@ function getAttributeValue(property: Property, attributeName: string): string {
     const siteAttributes = property?.specifics?.siteAttributes;
     if (!Array.isArray(siteAttributes)) return "N/A";
     const group = siteAttributes.find(
-        (group: any) => group.attributes?.some((attr: any) => attr.attributeName === attributeName)
+        (group: AttributeGroup) => group.attributes?.some((attr: Attribute) => attr.attributeName === attributeName)
     );
-    const attribute = group?.attributes?.find((attr: any) => attr.attributeName === attributeName);
+    const attribute = group?.attributes?.find((attr: Attribute) => attr.attributeName === attributeName);
     return attribute?.value || "N/A";
 }
 
@@ -37,7 +68,7 @@ const PropertyDetailsDrawer: React.FC<PropertyDetailsDrawerProps> = ({ property,
     console.log('siteAttributes:', property.specifics.details.siteAttributes);
 
     const transportationAttrs = property.specifics.details.siteAttributes?.find(
-        (g: any) => g.groupName === "Transportation"
+        (g: AttributeGroup) => g.groupName === "Transportation"
     )?.attributes || [];
     console.log('transportationAttrs:', transportationAttrs);
     const nearestAirport = getAttributeValue(property, "Nearest Airport");
@@ -133,7 +164,7 @@ const MapSection: React.FC = () => {
             <WordPullUp words='Site Selection' className='text-5xl text-slate-800 py-8' />
             <div id="copy"
                 className="flex flex-col gap-4 md:w-5xl 2xl:w-7xl mx-auto p-0 ">
-                <p className='text-2xl text-neutral-800 pb-10'>At NCGTP, site selection isn't a guessing game it's a launchpad. Our industrial sites and buildings are fully equipped with the infrastructure you need to hit the ground running. From precision utility planning to high-speed telecommunications, every detail is engineered for operational excellence. </p>
+                <p className='text-2xl text-neutral-800 pb-10'>At NCGTP, site selection isn&apos;t a guessing game it&apos;s a launchpad. Our industrial sites and buildings are fully equipped with the infrastructure you need to hit the ground running. From precision utility planning to high-speed telecommunications, every detail is engineered for operational excellence. </p>
                 {/* <Button variant="outline" className="w-max text-slate-800 border-slate-800 hover:bg-slate-100" onClick={()=>handleExploreClick()}>Explore Available Sites</Button> */}
                 {/* <a className="px-4 py-3 bg-blue-900 text-slate-50 text-lg hover:bg-slate-50 hover:text-blue-900 border-2 border-blue-900 transition-colors duration-300 rounded-2xl w-fit" href="https://properties.zoomprospector.com/NCGLOBALTRANSPARK?page=1&s%5bSortDirection%5d=true&s%5bradiusLat%5d=0&s%5bSizeUnits%5d=1&s%5bradius%5d=0&s%5bradiusLng%5d=0&s%5bSortBy%5d=featured&s%5bAttributes%5d=1324%3A%5B%3D%5D1">Explore Available Sites</a> */}
             </div>

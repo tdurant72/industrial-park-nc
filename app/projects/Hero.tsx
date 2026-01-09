@@ -5,7 +5,7 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import CursorPointer from "@/components/cursor-pointer";
+
 
 
 // Tab and category types for navigation
@@ -392,7 +392,7 @@ const Hero = () => {
                     md:mb-0
                     border p-4 "
                   >
-                    
+
                     {/* Client logo and info */}
                     <div className="relative h-32 mb-6">
                       <Image
@@ -483,11 +483,10 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className={`text-2xl md:text-4xl font-bold ${
-                activeTab === tab.id
+              className={`text-2xl md:text-4xl font-bold ${activeTab === tab.id
                   ? "border-b-2 border-black"
                   : "text-gray-400"
-              }`}
+                }`}
               onClick={() => setActiveTab(tab.id)}
             >
               {tab.name}
@@ -508,9 +507,8 @@ const Hero = () => {
             key={category.id}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-4 py-2 cursor-pointer ${
-              activeCategory === category.id ? "font-bold" : "text-gray-500"
-            }`}
+            className={`px-4 py-2 cursor-pointer ${activeCategory === category.id ? "font-bold" : "text-gray-500"
+              }`}
             onClick={() => setActiveCategory(category.id)}
           >
             {category.name}

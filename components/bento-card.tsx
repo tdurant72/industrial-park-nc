@@ -44,22 +44,22 @@ const BentoCard = ({
           >
             
           </div> */}
-          
+
           <div className="col-span-4 row-span-4 col-start-1 col-end-5 row-start-1 ">
-          <Image
-            src={img}
-            className="object-cover object-center rounded-tl-md rounded-br-md h-full w-full min-h-72 aspect-square"
-            alt={title}
-            width={566}
-            height={318.5}
-          />
+            <Image
+              src={img}
+              className="object-cover object-center rounded-tl-md rounded-br-md h-full w-full min-h-72 aspect-square"
+              alt={title}
+              width={566}
+              height={318.5}
+            />
           </div>
-          <div className={`col-start-1 col-span-4  row-span-4   bg-white/70  h-full w-full rounded-tr-[50px] md:pb-8 ${isMain ? "row-start-4":" row-start-3"}`}>
-          <div className="flex gap-4 md:gap-6 h-full w-full justify-between items-center p-2 md:px-4 md:py-0 ">
+          <div className={`col-start-1 col-span-4  row-span-4   bg-white/70  h-full w-full rounded-tr-[50px] md:pb-8 ${isMain ? "row-start-4" : " row-start-3"}`}>
+            <div className="flex gap-4 md:gap-6 h-full w-full justify-between items-center p-2 md:px-4 md:py-0 ">
               <div className="max-w-[90%]">
                 <h4 className="text-lg md:text-xl text-blue-950 font-medium">{title}</h4>
                 <p className="text-base md:text-lg text-slate-700">{description}</p>
-                {snippet && <p className="text-sm text-slate-600 mt-1">"{snippet}"</p>}
+                {snippet && <p className="text-sm text-slate-600 mt-1">&quot;{snippet}&quot;</p>}
               </div>
               <div>
                 {isVideo && (

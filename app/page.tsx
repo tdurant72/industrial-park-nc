@@ -64,45 +64,45 @@ export const metadata: Metadata = {
     canonical: "https://www.ncgtp.com/",
   }
 }
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "NCGTP - North Carolina Global TransPark",
-  "url": "https://www.ncgtp.com/",
-  "description": "Discover the North Carolina Global TransPark (NCGTP), a premier logistics and aerospace industrial park designed to accelerate business growth and innovation. Explore our state-of-the-art infrastructure, strategic location, and business advantages that make NCGTP the ideal destination for your next venture.",
-  "streetAddress": "2711 Gardner Rd",
-  "addressLocality": "Kinston",
-  "addressRegion": "NC",
-  "postalCode": "28504",
-  "addressCountry": "USA",
-  "image": "https://www.ncgtp.com/og-image-ncgtp.png",
-  "keywords": [
-    "NCGTP",
-    "North Carolina Global TransPark",
-    "logistics hub",
-    "aerospace park",
-    "industrial park",
-    "business growth",
-    "infrastructure",
-    "site selection",
-    "business incentives",
-    "supply chain solutions",
-    "manufacturing",
-    "distribution center",
-    "transportation network",
-    "economic development",
-    "Eastern North Carolina"
-  ],
-  "publisher": {
-    "@type": "Organization",
-    "name": "NCGTP",
-    "url": "https://www.ncgtp.com/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.ncgtp.com/og-image-ncgtp.png"
-    }
-  }
-};
+// const structuredData = {
+//   "@context": "https://schema.org",
+//   "@type": "WebSite",
+//   "name": "NCGTP - North Carolina Global TransPark",
+//   "url": "https://www.ncgtp.com/",
+//   "description": "Discover the North Carolina Global TransPark (NCGTP), a premier logistics and aerospace industrial park designed to accelerate business growth and innovation. Explore our state-of-the-art infrastructure, strategic location, and business advantages that make NCGTP the ideal destination for your next venture.",
+//   "streetAddress": "2711 Gardner Rd",
+//   "addressLocality": "Kinston",
+//   "addressRegion": "NC",
+//   "postalCode": "28504",
+//   "addressCountry": "USA",
+//   "image": "https://www.ncgtp.com/og-image-ncgtp.png",
+//   "keywords": [
+//     "NCGTP",
+//     "North Carolina Global TransPark",
+//     "logistics hub",
+//     "aerospace park",
+//     "industrial park",
+//     "business growth",
+//     "infrastructure",
+//     "site selection",
+//     "business incentives",
+//     "supply chain solutions",
+//     "manufacturing",
+//     "distribution center",
+//     "transportation network",
+//     "economic development",
+//     "Eastern North Carolina"
+//   ],
+//   "publisher": {
+//     "@type": "Organization",
+//     "name": "NCGTP",
+//     "url": "https://www.ncgtp.com/",
+//     "logo": {
+//       "@type": "ImageObject",
+//       "url": "https://www.ncgtp.com/og-image-ncgtp.png"
+//     }
+//   }
+// };
 const Home = () => {
   return (<div>
     <ReactLenis root>

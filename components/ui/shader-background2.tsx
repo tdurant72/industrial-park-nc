@@ -192,9 +192,9 @@ const ShaderBackground = () => {
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     const positions = [
       -1.0, -1.0,
-       1.0, -1.0,
-      -1.0,  1.0,
-       1.0,  1.0,
+      1.0, -1.0,
+      -1.0, 1.0,
+      1.0, 1.0,
     ];
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
@@ -218,7 +218,7 @@ const ShaderBackground = () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    let startTime = Date.now();
+    const startTime = Date.now();
     const render = () => {
       const currentTime = (Date.now() - startTime) / 1000;
 

@@ -6,8 +6,45 @@ import Image from "next/image"
 import { X } from "lucide-react"
 
 
+interface SiteAttribute {
+    attributeName: string;
+    value: string;
+}
+
+interface SiteAttributeGroup {
+    attributes: SiteAttribute[];
+}
+
+interface SiteContact {
+    name?: string;
+    title?: string;
+    company?: string;
+    email?: string;
+}
+
+interface SiteAttachment {
+    url: string;
+    label: string;
+}
+
+interface SiteSpecifics {
+    details?: {
+        description?: string;
+    };
+    photos?: string[];
+    siteAttributes?: SiteAttributeGroup[];
+    contact?: SiteContact;
+    attachments?: SiteAttachment[];
+    direction?: number;
+}
+
+interface SiteData {
+    name?: string;
+    specifics?: SiteSpecifics;
+}
+
 interface ModalProps {
-    siteData: any; // Replace 'any' with a more specific type if available
+    siteData: SiteData;
     onClose: () => void;
 }
 const variants: Variants = {
@@ -38,43 +75,6 @@ const Modal = ({ siteData, onClose }: ModalProps) => {
             (prevIndex) =>
                 (prevIndex - 1 + (siteData.specifics?.photos?.length || 1)) % (siteData.specifics?.photos?.length || 1),
         )
-    }
-
-    interface SiteAttribute {
-        attributeName: string;
-        value: string;
-    }
-
-    interface SiteAttributeGroup {
-        attributes: SiteAttribute[];
-    }
-
-    interface SiteContact {
-        name?: string;
-        title?: string;
-        company?: string;
-        email?: string;
-    }
-
-    interface SiteAttachment {
-        url: string;
-        label: string;
-    }
-
-    interface SiteSpecifics {
-        details?: {
-            description?: string;
-        };
-        photos?: string[];
-        siteAttributes?: SiteAttributeGroup[];
-        contact?: SiteContact;
-        attachments?: SiteAttachment[];
-        direction?: number;
-    }
-
-    interface SiteData {
-        name?: string;
-        specifics?: SiteSpecifics;
     }
 
     const getAttributeValue = (attributeName: string): string => {
@@ -191,7 +191,7 @@ const Modal = ({ siteData, onClose }: ModalProps) => {
                             </div>
                         </div>
                         {
-                            siteData.specifics?.attachments[0]?.url && (
+                            siteData.specifics?.attachments?.[0]?.url && (
                                 <div className="mt-6">
                                     <a className="bg-amber-400 hover:bg-amber-500 my-4 p-4  text-black no-underline rounded" href={`${siteData.specifics?.attachments[0]?.url}`} target="_blank">{`${siteData.specifics?.attachments[0].label}`}</a>
                                 </div>

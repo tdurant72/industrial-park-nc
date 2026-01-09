@@ -1,6 +1,5 @@
 import Culture from "./culture";
 import Team from "./team";
-import ShaderBackground from "@/components/ui/shader-background";
 import ShaderBackground2 from "@/components/ui/shader-background2";
 const About = () => {
     return (
@@ -21,10 +20,10 @@ const About = () => {
                     {/* <div><ShaderBackground /></div> */}
                     <ShaderBackground2 />
                 </div>
-               <Culture />
-                <Team /> 
+                <Culture />
+                <Team />
             </div>
-            
+
         </>
     );
 }
