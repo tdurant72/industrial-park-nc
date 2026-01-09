@@ -12,6 +12,7 @@ const Hero = () => {
         // Determine if the page was reloaded or navigated to
         const navigation = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming;
         if (navigation.type === "reload" || navigation.type === "navigate") {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setHasAnimated(false);
         } else {
             setHasAnimated(true);
@@ -118,7 +119,7 @@ const Hero = () => {
                             className="bg-black text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-gray-800 transition"
                         >
                             View Our Work
-                    
+
                         </Link>
                         <motion.a
                             href="https://meetings.hubspot.com/productizedos/epic-labs?uuid=fca92f30-4111-4445-9498-af335bb840af"
@@ -127,7 +128,7 @@ const Hero = () => {
                             className="bg-red-500 text-white
                             px-6 md:px-8 py-3 rounded-full text-lg
                                 font-medium hover:bg-red-600 transition-all hover:shadow-lg inline-block"
-                            >
+                        >
                             Book a meeting
                         </motion.a>
                     </motion.div>
@@ -135,17 +136,17 @@ const Hero = () => {
             </motion.div>
             {/* Video Section */}
             <motion.div
-            variants={videoContainerVariants}
-            initial={hasAnimated ? "visible" : "hidden"}
-            animate="visible"
-            className="flex justify-center w-full md:px-0"
+                variants={videoContainerVariants}
+                initial={hasAnimated ? "visible" : "hidden"}
+                animate="visible"
+                className="flex justify-center w-full md:px-0"
             >
                 <motion.div
                     style={{
-                        width:videoWidth,
-                        scale:videoScale,
-                        borderRadius:videoBorderRadius,
-                        overflow:'hidden'
+                        width: videoWidth,
+                        scale: videoScale,
+                        borderRadius: videoBorderRadius,
+                        overflow: 'hidden'
                     }}
                     className="relative w-full md:w-auto"
                 >
