@@ -2,8 +2,8 @@ import React from "react";
 import BentoCard from "@/components/bento-card";
 
 const Advantages = () => {
-    return ( 
-        <section id="features" className="pt-14 pb-4 mb-10 md:pb-9 bg-white">
+  return (
+    <section id="features" className="pt-14 pb-4 mb-10 md:pb-9 bg-white">
       <div className="container mx-auto px-3 md:px-10">
         <div
           className="top-section grid grid-cols-3 gap-4 mb-4"
@@ -29,7 +29,6 @@ const Advantages = () => {
               title="John Smith"
               description="Executive Director"
               isVideo
-              isMain
             />
           </div>
         </div>
@@ -58,13 +57,13 @@ const Advantages = () => {
               title="JB Bento"
               description="CEO of Radiant Technologies"
               isVideo
-             
+
             />
           </div>
         </div>
       </div>
     </section>
-     );
+  );
 }
- 
+
 export default Advantages;
