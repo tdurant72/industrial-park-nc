@@ -9,10 +9,9 @@ const BentoCard = ({
   title,
   description,
   snippet,
-  isMain = false,
   isVideo,
   variants,
-}: { src: string; img: string; title: string; description: string; snippet?: string; isMain?: boolean; isVideo?: boolean; variants?: Variants }) => {
+}: { src: string; img: string; title: string; description: string; snippet?: string; isVideo?: boolean; variants?: Variants }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   function handlePlay() {
@@ -29,7 +28,7 @@ const BentoCard = ({
     }
   }
   return (
-    <motion.div variants={variants} initial="hidden" animate="visible" className="grid grid-cols-4 grid-rows-4 h-full overflow-hidden">
+    <motion.div variants={variants} initial="hidden" animate="visible" className="grid grid-cols-4 grid-rows-4 h-full overflow-hidden border border-slate-800 rounded-3xl bg-slate-900 shadow-2xl hover:border-amber-500/30 transition-colors duration-500 group/card">
       {isPlaying ? (
         <video
           ref={videoRef}
@@ -39,35 +38,40 @@ const BentoCard = ({
       ) : (
         <>
           {/* <div
-            className={`col-start-1 row-start-4 row-span-1 z-50  rounded-tr-[50px] bg-white/50 flex items-end py-2 gap-4 md:gap-7 ${isMain ? "col-span-4 md:col-span-4" : "col-span-4 md:col-span-3"
+            className={`col-start-1 row-start-4 row-span-1 z-50  rounded-tr-[50px] bg-white/50 flex items-end py-2 gap-4 md:gap-7 
               }`}
           >
             
           </div> */}
 
-          <div className="col-span-4 row-span-4 col-start-1 col-end-5 row-start-1 ">
+          <div className="col-span-4 row-span-4 col-start-1 col-end-5 row-start-1 relative">
             <Image
               src={img}
-              className="object-cover object-center rounded-tl-md rounded-br-md h-full w-full min-h-72 aspect-square"
+              className="object-cover object-center h-full w-full min-h-[400px]"
               alt={title}
               width={566}
-              height={318.5}
+              height={400}
             />
+            {/* Premium Dark Gradient Overlay */}
+            <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/40 to-transparent" />
           </div>
-          <div className={`col-start-1 col-span-4  row-span-4   bg-white/70  h-full w-full rounded-tr-[50px] md:pb-8 ${isMain ? "row-start-4" : " row-start-3"}`}>
-            <div className="flex gap-4 md:gap-6 h-full w-full justify-between items-center p-2 md:px-4 md:py-0 ">
-              <div className="max-w-[90%]">
-                <h4 className="text-lg md:text-xl text-blue-950 font-medium">{title}</h4>
-                <p className="text-base md:text-lg text-slate-700">{description}</p>
-                {snippet && <p className="text-sm text-slate-600 mt-1">&quot;{snippet}&quot;</p>}
+
+          <div className="col-start-1 col-span-4 row-start-3 row-span-2 relative z-10 flex flex-col justify-end p-6 md:p-8">
+            <div className="flex justify-between items-end gap-4 w-full">
+              <div className="max-w-[80%]">
+                <p className="text-amber-400 text-sm font-bold uppercase tracking-widest mb-1 italic">
+                  {snippet ? `"${snippet}"` : ""}
+                </p>
+                <h4 className="text-xl md:text-2xl text-white font-bold tracking-tight">{title}</h4>
+                <p className="text-slate-300 text-sm md:text-base font-medium">{description}</p>
               </div>
-              <div>
+              <div className="pb-1">
                 {isVideo && (
                   <button
-                    className="z-20  border-orange-600 border-2  rounded-full bg-orange-600/20"
+                    className="group/play z-20 border-amber-500/50 border-2 rounded-full bg-amber-500/10 p-1 hover:bg-amber-500 hover:border-amber-500 transition-all duration-300 shadow-lg shadow-amber-500/20"
                     onClick={handlePlay}
                   >
-                    <BiPlay className="h-7 md:h-10 w-7 md:w-10 text-orange-600" />
+                    <BiPlay className="h-8 md:h-12 w-8 md:w-12 text-amber-500 group-hover/play:text-slate-950 transition-colors" />
                   </button>
                 )}
               </div>

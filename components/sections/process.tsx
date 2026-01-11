@@ -3,9 +3,9 @@ import ProcessClient from "@/components/process-client";
 const Process = () => {
 
     return (
-        <section id="process" className="pt-[8vh] bg-radial-[at_25%_25%] from-slate-50 to-slate-200 to-75% h-full md:h-screen overflow-hidden">
-            <div className="container mx-auto h-full md:w-5xl 2xl:w-7xl content-start overflow-hidden">
-                <WordPullUp words="We Make It Easy" className="text-4xl md:text-5xl text-slate-800" />
+        <section id="process" className="py-24 bg-radial-[at_25%_25%] from-slate-50 to-slate-200 to-75% overflow-hidden">
+            <div className="container mx-auto px-6 md:w-5xl 2xl:w-7xl">
+                <WordPullUp words="We Make It Easy" className="text-4xl md:text-5xl text-slate-800 text-center" />
                 <h1 className="hidden">We Make It Easy</h1>
                 <h2 className="text-slate-800 mt-6 mb-10 text-2xl md:text-3xl text-center">Move your business to a place designed for success</h2>
                 <ProcessClient />

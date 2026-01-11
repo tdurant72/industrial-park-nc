@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Plus } from 'lucide-react';
 import { WordPullUp } from '@/components/ui/word-up';
 interface FAQItemProps {
-    question: string;
-    answer: string;
-    }
+  question: string;
+  answer: string;
+}
 
 
-const FAQItem : React.FC<FAQItemProps> = ({ question, answer }) => {
+const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -97,19 +97,20 @@ const Faq = () => {
   ];
 
   return (
-    <div className="bg-slate-50/80 mx-auto 2xl:w-4/5 md:px-16
-     px-6 py-16 pb-32 ">
-      <WordPullUp words='Frequently Asked Questions' className="text-5xl font-bold mb-12 "/>
-      <div className="space-y-2">
-        {faqData.map((item, index) => (
-          <FAQItem
-            key={index}
-            question={item.question}
-            answer={item.answer}
-          />
-        ))}
+    <section id="faq" className="py-24 bg-slate-50">
+      <div className="container mx-auto px-6 md:w-5xl 2xl:w-7xl">
+        <WordPullUp words='Frequently Asked Questions' className="text-4xl md:text-5xl font-bold mb-16 text-slate-900 text-center" />
+        <div className="space-y-2">
+          {faqData.map((item, index) => (
+            <FAQItem
+              key={index}
+              question={item.question}
+              answer={item.answer}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

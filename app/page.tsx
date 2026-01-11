@@ -104,25 +104,23 @@ export const metadata: Metadata = {
 //   }
 // };
 const Home = () => {
-  return (<div>
-    <ReactLenis root>
-      <Hero />
-      <BusinessAdvantages />
-      <Infrastructure />
-      <ConciergeRelocationBlurb />
-      {/* <ParallaxDivider /> */}
-      <Process />
-      <Partners />
-      {/* <SiteSelection /> */}
-      {/* <SiteSelectionAlt /> */}
-      <MapSection />
-      <Latest />
-      <Faq />
-      {/* background graphic webgl */}
-      <ShaderBackground />
-      <StickyExpertButton />
-    </ReactLenis>
-  </div>);
+  return (
+    <main className="relative">
+      <ReactLenis root>
+        <Hero />
+        <BusinessAdvantages />
+        <Infrastructure />
+        <ConciergeRelocationBlurb />
+        <Process />
+        <Partners />
+        <MapSection />
+        <Latest />
+        <Faq />
+        <ShaderBackground />
+        <StickyExpertButton />
+      </ReactLenis>
+    </main>
+  );
 }
 
 export default Home;

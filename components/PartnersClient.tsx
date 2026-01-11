@@ -186,34 +186,35 @@ export function PartnersClient() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
                 className="w-full h-full flex flex-col items-center justify-center overflow-hidden py-2">
-                <div className="hidden shrink-0 gap-2 py-2 w-full md:flex justify-end">
+                <div className="flex shrink-0 gap-4 py-8 w-full justify-center">
                     <Button
                         size="icon"
-                        variant="ghost"
+                        variant="outline"
                         onClick={() => {
                             carouselApi?.scrollPrev();
                         }}
                         disabled={!canScrollPrev}
-                        className="disabled:pointer-events-auto"
+                        className="rounded-full border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-white disabled:opacity-30 p-6"
                     >
-                        <ArrowLeft className="size-5" />
+                        <ArrowLeft className="size-6" />
                     </Button>
                     <Button
                         size="icon"
-                        variant="ghost"
+                        variant="outline"
                         onClick={() => {
                             carouselApi?.scrollNext();
                         }}
                         disabled={!canScrollNext}
-                        className="disabled:pointer-events-auto"
+                        className="rounded-full border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-white disabled:opacity-30 p-6"
                     >
-                        <ArrowRight className="size-5" />
+                        <ArrowRight className="size-6" />
                     </Button>
                 </div>
                 <div className="w-full">
                     <Carousel
                         setApi={setCarouselApi}
                         opts={{
+                            align: "center",
                             breakpoints: {
                                 "(max-width: 768px)": {
                                     dragFree: true,
@@ -221,30 +222,32 @@ export function PartnersClient() {
                             },
                         }}
                     >
-                        <CarouselContent className="ml-0 2xl:ml-[max(8rem,calc(50vw-700px))] 2xl:mr-[max(0rem,calc(50vw-700px))]">
+                        <CarouselContent className="ml-0">
                             {partnersList.map((item) => (
                                 <CarouselItem
                                     key={item.name}
-                                    className="max-w-[320px] pl-5 lg:max-w-[360px]"
+                                    className="max-w-[320px] pl-5 lg:max-w-[400px]"
                                 >
-                                    <div className="group rounded-xl">
-                                        <div className="group relative h-full min-h-108 max-w-full overflow-hidden rounded-xl md:aspect-5/4 lg:aspect-video">
+                                    <div className="group rounded-3xl border border-slate-800 bg-slate-900 overflow-hidden shadow-2xl transition-all duration-300 hover:border-amber-500/30">
+                                        <div className="group relative h-full min-h-[450px] overflow-hidden">
                                             <img
                                                 src={item.src}
                                                 alt={item.name}
-                                                className="absolute h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                                                className="absolute h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
                                             />
-                                            <div className="absolute inset-0 h-full bg-[linear-gradient(hsl(var(--primary)/0),hsl(var(--primary)/0.4),hsl(var(--primary)/0.8)_100%)] mix-blend-multiply" />
-                                            <div className="absolute inset-x-0 bottom-0 flex flex-col items-start p-6 text-primary-foreground md:p-8">
-                                                <div className="mb-2 pt-4 text-xl text-shadow-md text-shadow-slate-800 font-semibold md:mb-3 md:pt-4 lg:pt-4">
+                                            {/* Gradient Overlay Matching BentoCard */}
+                                            <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/40 to-transparent" />
+
+                                            <div className="absolute inset-x-0 bottom-0 flex flex-col items-start p-8">
+                                                <div className="mb-2 text-2xl font-bold text-white capitalize">
                                                     {item.name}
                                                 </div>
-                                                <div className="text-shadow-md text-shadow-slate-800 mb-8 line-clamp-2 md:mb-12 lg:mb-9">
+                                                <div className="text-slate-300 mb-8 line-clamp-2 text-base">
                                                     {item.description}
                                                 </div>
-                                                <button className="flex items-center text-sm rounded-lg px-2 py-3 bg-slate-800/70 border-2 border-blue-800 cursor-pointer" onClick={() => setSelectedPartner(item)}>
-                                                    Read more{" "}
-                                                    <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
+                                                <button className="flex items-center text-sm font-bold rounded-xl px-5 py-3 bg-amber-500 text-slate-950 hover:bg-amber-400 transition-all cursor-pointer group/btn" onClick={() => setSelectedPartner(item)}>
+                                                    Explore Partnership{" "}
+                                                    <ArrowRight className="ml-2 size-5 transition-transform group-hover/btn:translate-x-1" />
                                                 </button>
                                             </div>
                                         </div>
@@ -253,17 +256,6 @@ export function PartnersClient() {
                             ))}
                         </CarouselContent>
                     </Carousel>
-                    <div className="my-8 flex justify-center gap-2">
-                        {partnersList.map((_, index) => (
-                            <button
-                                key={index}
-                                className={`h-2 w-2 rounded-full transition-colors ${currentSlide === index ? "bg-primary" : "bg-primary/20"
-                                    }`}
-                                onClick={() => carouselApi?.scrollTo(index)}
-                                aria-label={`Go to slide ${index + 1}`}
-                            />
-                        ))}
-                    </div>
                 </div>
             </motion.div>
             <AnimatePresence>
@@ -273,7 +265,7 @@ export function PartnersClient() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-slate-50/75 backdrop-blur-xs z-40"
+                            className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-40"
                             onClick={() => setSelectedPartner(null)}
                         />
                         <PartnerDetails

@@ -3,47 +3,59 @@ import { WordPullUp } from '@/components/ui/word-up'
 import FeaturedNewsCard from '@/components/featured-news-card'
 const Latest = () => {
     return (
-        <section className="flex justify-center items-center min-h-screen inset-0 bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]">
-            <div className="container mx-auto my-16">
-                <div className="block mb-4 mx-auto pb-2">
+        <section id="latest-news" className="py-24 bg-slate-50 relative overflow-hidden">
+            <div className="absolute inset-0 z-0 opacity-[0.08] pointer-events-none"
+                style={{
+                    backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px'
+                }} />
+            <div className="container mx-auto px-6 md:w-5xl 2xl:w-7xl relative z-10">
+                <div className="mb-20 text-center">
                     <WordPullUp
                         words="Latest News"
-                        className="mt-5 text-slate-800! md:text-5xl  text-center"
+                        className="text-slate-950 text-4xl md:text-5xl font-bold text-center"
                     />
+                    <p className="text-slate-600 text-xl font-medium mt-6 max-w-2xl mx-auto">
+                        Staying ahead of the curve in industrial logistics and aerospace.
+                    </p>
                 </div>
-                <div id='all' className='flex flex-col md:flex-row gap-4'>
-                    <div className='w-full md:basis-1/2'>
-                        <FeaturedNewsCard imgSrc='/images/news/charlotte.jpg' imgAlt='North Carolina Ranks in Top Three States to Do Business' title='North Carolina Ranks in Top Three States to Do Business' link='https://www.cnbc.com/2024/06/17/north-carolina-ranks-in-top-three-states-to-do-business.html' isMain={true}>
-                            <p className="block text-lg antialiased font-light leading-relaxed text-inherit">
-                                CNBC named North Carolina as second best state to do business and in the top three for the fifth year in a row thanks to our well-trained and diverse workforce, booming economy, and strong business environment. In 2019, North Carolina ranked third; in 2021, the state ranked second; and in both 2022 and 2023 North Carolina ranked first
-                            </p>
-                            <p>Today, CNBC named North Carolina as second best state to do business and in the top three for the fifth year in a row thanks to our well-trained and diverse workforce, booming economy, and strong business environment. In 2019, North Carolina ranked third; in 2021, the state ranked second; and in both 2022 and 2023 North Carolina ranked first.
-                            </p>
-                            <blockquote className='font-semibold mt-6'>
-                                “Investing in our people makes our continued success possible,” said Governor Roy Cooper. “Thanks to our highly-skilled workforce built by our strong public schools and thriving economy with major investments from companies across all sectors, North Carolina continues to be a top destination for business.”</blockquote>
+                <div id='all' className='flex flex-col lg:flex-row gap-8 items-start'>
+                    {/* Featured Article - Left Column */}
+                    <div className='w-full lg:w-1/2'>
+                        <FeaturedNewsCard
+                            imgSrc='/images/news/charlotte.jpg'
+                            imgAlt='North Carolina Ranks in Top Three States to Do Business'
+                            title='North Carolina Ranks in Top Three States to Do Business'
+                            link='https://www.cnbc.com/2024/06/17/north-carolina-ranks-in-top-three-states-to-do-business.html'
+                            isMain={true}
+                        >
+                            <div className="space-y-4">
+                                <p className="text-lg text-slate-800 leading-relaxed font-bold">
+                                    CNBC named North Carolina as second best state to do business and in the top three for the fifth year in a row.
+                                </p>
+                                <p className="text-base text-slate-700 leading-relaxed">
+                                    This recognition comes thanks to our well-trained and diverse workforce, booming economy, and strong business environment. In 2021, the state ranked second; and in both 2022 and 2023 North Carolina ranked first.
+                                </p>
+                                <blockquote className='font-bold text-amber-700 border-l-4 border-amber-500 pl-4 py-2 italic bg-amber-50/50 rounded-r-lg'>
+                                    “Investing in our people makes our continued success possible,” said Governor Roy Cooper.
+                                </blockquote>
+                            </div>
                         </FeaturedNewsCard>
                     </div>
-                    {/* Cards */}
-                    <div id="stories" className='w-full md:basis-1/2 flex flex-wrap gap-4'>
-                        <FeaturedNewsCard imgSrc='/images/news/batteries.jpg' imgAlt='Natron Energy Announces $1.4 Billion Investment in North Carolina' title='Natron Energy Announces $1.4 Billion Investment in North Carolina' link='https://www.prnewswire.com/news-releases/natron-energy-announces-1-4-billion-investment-in-north-carolina-301842467.html'>
-                            <p className="block text-base antialiased font-light leading-relaxed text-inherit">
-                                Natron Energy, Inc., the only commercial manufacturer of sodium-ion batteries in the U.S., has announced it will invest $1.4 billion to establish a sodium-ion battery giga-factory at the Kingsboro CSX Select Megasite in Edgecombe County.
-                            </p>
+
+                    {/* Secondary Stories - 2 Column Grid on Right */}
+                    <div id="stories" className='w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-16'>
+                        <FeaturedNewsCard imgSrc='/images/news/batteries.jpg' imgAlt='Natron Energy' title='Natron Energy: $1.4B Investment' link='https://www.prnewswire.com/news-releases/natron-energy-announces-1-4-billion-investment-in-north-carolina-301842467.html'>
+                            <p className="text-sm text-slate-950 font-semibold leading-relaxed">Establishing a sodium-ion battery giga-factory at the Kingsboro CSX Select Megasite, driving regional growth.</p>
                         </FeaturedNewsCard>
-                        <FeaturedNewsCard imgSrc='/images/news/aircraft.jpg' imgAlt='In major investment, officials break ground for military aircraft maintenance facility at N.C. Global TransPark' title='In major investment, officials break ground for military aircraft maintenance facility at N.C. Global TransPark' link='https://www.witn.com/2024/06/11/major-investment-officials-break-ground-military-aircraft-maintenance-facility-nc-global-transpark/'>
-                            <p className="block text-base antialiased font-light leading-relaxed text-inherit">
-                                State, federal and local officials broke ground Tuesday on a North Carolina Global TransPark complex that the U.S. Navy will use to maintain and repair Navy and Marine Corps aircraft.
-                            </p>
+                        <FeaturedNewsCard imgSrc='/images/news/aircraft.jpg' imgAlt='Military Aircraft' title='Military Maintenance Facility' link='https://www.witn.com/2024/06/11/major-investment-officials-break-ground-military-aircraft-maintenance-facility-nc-global-transpark/'>
+                            <p className="text-sm text-slate-950 font-semibold leading-relaxed">Officials break ground on a major Navy and Marine Corps maintenance facility at the TransPark.</p>
                         </FeaturedNewsCard>
-                        <FeaturedNewsCard imgSrc='/images/news/students.jpg' imgAlt='Global TransPark hosts RIME 2024 connecting students with industry' title='Global TransPark hosts RIME 2024 connecting students with industry' link='https://www.prnewswire.com/news-releases/global-transpark-hosts-rime-2024-connecting-students-with-industry-301838907.html'>
-                            <p className="block text-base antialiased font-light leading-relaxed text-inherit">
-                                The Regional Industry and Manufacturing Expo (RIME) 2024 kicked off Wednesday at the North Carolina Global TransPark, drawing high school students from across Greene, Jones, Lenoir, and Wayne Counties.
-                            </p>
+                        <FeaturedNewsCard imgSrc='/images/news/airport.jpg' imgAlt='Pilot Training' title='$30M Pilot Training Center' link='https://www.prnewswire.com/news-releases/north-carolina-and-nc-global-transpark-invest-30-million-for-pilot-training-center-301837906.html'>
+                            <p className="text-sm text-slate-950 font-semibold leading-relaxed">Securing a cutting-edge pilot training center to advance North Carolina&apos;s aviation leadership.</p>
                         </FeaturedNewsCard>
-                        <FeaturedNewsCard imgSrc='/images/news/airport.jpg' imgAlt='North Carolina and NC Global TransPark invest $30 million for pilot training center' title='North Carolina and NC Global TransPark invest $30 million for pilot training center' link='https://www.prnewswire.com/news-releases/north-carolina-and-nc-global-transpark-invest-30-million-for-pilot-training-center-301837906.html'>
-                            <p className="block text-base antialiased font-light leading-relaxed text-inherit">
-                                A leading provider of premium private jet charter experiences, today announced that the Global Transpark secured a $30 million investment from the State of North Carolina for a cutting-edge pilot training center and headquarters.
-                            </p>
+                        <FeaturedNewsCard imgSrc='/images/news/students.jpg' imgAlt='RIME 2024' title='NCGTP hosts RIME 2024' link='https://www.prnewswire.com/news-releases/global-transpark-hosts-rime-2024-connecting-students-with-industry-301838907.html'>
+                            <p className="text-sm text-slate-950 font-semibold leading-relaxed">Connecting students with industry leaders to foster the next generation of industrial workforce.</p>
                         </FeaturedNewsCard>
                     </div>
                 </div>
