@@ -10,7 +10,7 @@ const NCGTPHeroVideo = () => {
         }
     }, []);
     return (
-        <div className="hidden md:block col-start-3 col-end-5 row-start-1 row-end-3 content-center justify-items-center h-full width-full overflow-hidden relative rounded-tr-2xl bg-amber-500 drop-shadow-sm drop-shadow-neutral-700">
+        <div className="hidden md:block md:col-start-2 lg:col-start-3 col-end-5 row-start-1 row-end-3 content-center justify-items-center h-full width-full overflow-hidden relative rounded-tr-2xl bg-amber-500 drop-shadow-sm drop-shadow-neutral-700">
             {isIOS ? (
                 <iframe
                     src="https://www.youtube.com/embed/iiV5udOKPc4?autoplay=1&loop=1&controls=0&playlist=iiV5udOKPc4"

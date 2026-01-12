@@ -4,8 +4,8 @@ import { CheckCircle2 } from "lucide-react";
 
 const BusinessAdvantages = () => {
     return (
-        <section id="business-advantages" className="py-24 bg-slate-950 text-white overflow-hidden">
-            <div className="container mx-auto px-6 md:w-5xl 2xl:w-7xl">
+        <section id="business-advantages" className="w-full -mx-6 md:mx-0 py-24 bg-slate-950 text-white">
+            <div className="mx-auto px-6 md:w-5xl 2xl:w-7xl">
 
                 {/* ROW 1: THE LOGIC RIBBON */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
