@@ -3,19 +3,19 @@ import { WordPullUp } from '@/components/ui/word-up'
 import FeaturedNewsCard from '@/components/featured-news-card'
 const Latest = () => {
     return (
-        <section id="latest-news" className="py-24 bg-slate-50 relative overflow-hidden">
+        <section id="latest-news" className="py-24 bg-slate-950 relative overflow-hidden">
             <div className="absolute inset-0 z-0 opacity-[0.08] pointer-events-none"
                 style={{
-                    backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`,
+                    backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
                     backgroundSize: '40px 40px'
                 }} />
             <div className="container mx-auto px-6 md:w-5xl 2xl:w-7xl relative z-10">
                 <div className="mb-20 text-center">
                     <WordPullUp
                         words="Latest News"
-                        className="text-slate-950 text-4xl md:text-5xl font-bold text-center"
+                        className="text-slate-50 text-4xl md:text-5xl font-bold text-center"
                     />
-                    <p className="text-slate-600 text-xl font-medium mt-6 max-w-2xl mx-auto">
+                    <p className="text-slate-50 text-xl font-medium mt-6 max-w-2xl mx-auto">
                         Staying ahead of the curve in industrial logistics and aerospace.
                     </p>
                 </div>

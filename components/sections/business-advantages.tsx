@@ -12,7 +12,7 @@ const BusinessAdvantages = () => {
                     <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl hover:border-amber-500/50 transition-colors group">
                         <p className="text-amber-500 font-bold uppercase tracking-widest text-xs mb-2 italic">Strategic Advantage</p>
                         <h3 className="text-4xl font-bold mb-2">0% Tax</h3>
-                        <p className="text-slate-400 text-sm">North Carolina corporate tax phase-out through 2030 vision.</p>
+                        <p className="text-slate-200 text-sm">North Carolina corporate tax phase-out through 2030 vision.</p>
                         <div className="mt-4 flex gap-2">
                             <span className="px-2 py-1 bg-amber-500/10 text-amber-500 text-[10px] font-bold rounded border border-amber-500/20 leading-none">2030 VISION</span>
                         </div>
@@ -21,7 +21,7 @@ const BusinessAdvantages = () => {
                     <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl hover:border-amber-500/50 transition-colors">
                         <p className="text-amber-500 font-bold uppercase tracking-widest text-xs mb-2 italic">Market Validation</p>
                         <h3 className="text-4xl font-bold mb-2">#1 State</h3>
-                        <p className="text-slate-400 text-sm">Recognized as the top state for business climate and growth.</p>
+                        <p className="text-slate-200 text-sm">Recognized as the top state for business climate and growth.</p>
                         <div className="mt-4 flex gap-2">
                             <span className="px-2 py-1 bg-amber-500/10 text-amber-500 text-[10px] font-bold rounded border border-amber-500/20 leading-none">CBRE & FORBES</span>
                         </div>
@@ -30,7 +30,7 @@ const BusinessAdvantages = () => {
                     <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl hover:border-amber-500/50 transition-colors">
                         <p className="text-amber-500 font-bold uppercase tracking-widest text-xs mb-2 italic">Operations Readiness</p>
                         <h3 className="text-4xl font-bold mb-2">5.2M</h3>
-                        <p className="text-slate-400 text-sm">Skilled labor force ready for advanced manufacturing.</p>
+                        <p className="text-slate-200 text-sm">Skilled labor force ready for advanced manufacturing.</p>
                         <div className="mt-4 flex gap-2">
                             <span className="px-2 py-1 bg-amber-500/10 text-amber-500 text-[10px] font-bold rounded border border-amber-500/20 leading-none">GLOBAL TALENT</span>
                         </div>

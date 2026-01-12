@@ -14,8 +14,10 @@ const Hero = () => {
                         <h1 className="text-xs md:text-base text-blue-950 text-shadow-xs text-shadow-blue-400 text-left">North Carolina Global TransPark<span className="hidden">North Carolina Global TransPark</span></h1>
                         <h2 className="text-3xl md:text-4xl text-neutral-800 mb-6 font-bold">Scale Your Manufacturing on the East Coast’s Longest Runway.</h2>
                         <h3 className="text-neutral-800 text-2xl md:text-3xl text-balance">Unlock millions in performance-based incentives at the North Carolina Global TransPark.</h3>
-                        <button className="mt-6 bg-amber-500 text-neutral-50 backdrop-blur-sm px-4 py-2 rounded-lg text-lg font-medium hover:bg-white/90 hover:text-amber-700 transition-colors duration-200 cursor-pointer drop-shadow-xs drop-shadow-amber-900 w-fit self-start">
-                            Request an Executive Site Briefing <FaCalendarAlt className="inline-block ml-2" />
+                        <button className="mt-8 bg-amber-500 text-slate-950 px-8 py-4 rounded-full shadow-2xl border border-amber-600 flex items-center gap-4 text-sm font-bold uppercase tracking-widest hover:bg-amber-400 transition-all duration-300 w-fit self-start group">
+                            Request an Executive Site Briefing
+                            <div className="h-6 w-px bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors cursor-pointer" />
+                            <FaCalendarAlt className="size-5" />
                         </button>
                     </div>
                 </div>
@@ -30,14 +32,14 @@ const Hero = () => {
                                 width={450}
                                 height={450}
                                 style={{ height: 450, width: "auto" }}
-                                className=" rounded-bl-2xl drop-shadow-xs drop-shadow-neutral-700"
+                                className=" rounded-bl-2xl drop-shadow-sm drop-shadow-neutral-700"
                             />
 
                             <div className="bg-slate-50/40 h-full w-full absolute top-0 left-0 right-0 bottom-0" />
                             <Image
                                 src="/images/ncgtp/grow-ftz.webp"
                                 alt="grow with Free Trade Zones at NCGTP"
-                                className="absolute top-4 right-6 md:-right-6 drop-shadow-xs drop-shadow-neutral-700"
+                                className="absolute top-4 right-6 md:-right-6 drop-shadow-sm drop-shadow-neutral-700"
                                 priority
                                 width={150}
                                 height={56}
@@ -46,7 +48,7 @@ const Hero = () => {
                             <Image
                                 src="/images/ncgtp/work-employers.webp"
                                 alt="grow with Free Trade Zones at NCGTP"
-                                className="absolute top-1/2 -translate-y-1/2  left-8 md:-left-8 drop-shadow-xs drop-shadow-neutral-700"
+                                className="absolute top-1/2 -translate-y-1/2  left-8 md:-left-8 drop-shadow-sm drop-shadow-neutral-700"
                                 priority
                                 width={150}
                                 height={56}
@@ -55,7 +57,7 @@ const Hero = () => {
                             <Image
                                 src="/images/ncgtp/jeremy-stroud.webp"
                                 alt="grow with Free Trade Zones at NCGTP"
-                                className="absolute  top-2/3 -translate-y-2/3 right-10 drop-shadow-xs drop-shadow-neutral-700"
+                                className="absolute  top-2/3 -translate-y-2/3 right-10 drop-shadow-md drop-shadow-neutral-700"
                                 priority
                                 width={56}
                                 height={150}

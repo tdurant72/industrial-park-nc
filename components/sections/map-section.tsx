@@ -105,8 +105,8 @@ const MapSection: React.FC = () => {
                 {/* <a className="px-4 py-3 bg-blue-900 text-slate-50 text-lg hover:bg-slate-50 hover:text-blue-900 border-2 border-blue-900 transition-colors duration-300 rounded-2xl w-fit" href="https://properties.zoomprospector.com/NCGLOBALTRANSPARK?page=1&s%5bSortDirection%5d=true&s%5bradiusLat%5d=0&s%5bSizeUnits%5d=1&s%5bradius%5d=0&s%5bradiusLng%5d=0&s%5bSortBy%5d=featured&s%5bAttributes%5d=1324%3A%5B%3D%5D1">Explore Available Sites</a> */}
             </div>
             <Card className="h-[75vh] md:w-5xl 2xl:w-7xl mx-auto p-0 overflow-hidden">
-                {/* 35.33091811544694, -77.60923274711917 */}
-                <Map center={[-77.60923274711917, 35.33091811544694]} zoom={13}>
+                {/* 35.32561712246613, -77.61504924333079*/}
+                <Map center={[-77.61504924333079, 35.32561712246613]} zoom={13}>
                     {properties.map((place: IndustrialProperty) => (
                         <MapMarker
                             key={place.id}

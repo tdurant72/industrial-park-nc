@@ -68,7 +68,7 @@ const BentoCard = ({
               <div className="pb-1">
                 {isVideo && (
                   <button
-                    className="group/play z-20 border-amber-500/50 border-2 rounded-full bg-amber-500/10 p-1 hover:bg-amber-500 hover:border-amber-500 transition-all duration-300 shadow-lg shadow-amber-500/20"
+                    className="group/play z-20 border-amber-500/50 border-2 rounded-full bg-amber-500/10 p-1 hover:bg-amber-500 hover:border-amber-500 transition-all duration-300 shadow-lg shadow-amber-500/20 cursor-pointer"
                     onClick={handlePlay}
                   >
                     <BiPlay className="h-8 md:h-12 w-8 md:w-12 text-amber-500 group-hover/play:text-slate-950 transition-colors" />
