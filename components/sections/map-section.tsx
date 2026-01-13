@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Bolt, Wifi, Plane, Droplets } from "lucide-react";
 import { Map, MapControls, MapMarker, MarkerContent, MarkerLabel } from "@/components/ui/map";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,7 +11,53 @@ import { properties } from "@/lib/properties";
 import { WordPullUp } from "@/components/ui/word-up";
 
 import { IndustrialProperty } from "@/lib/properties";
-
+import TechSpecCard from "../tech-spec-card";
+const specData = [
+  {
+    title: "Electrical Grid",
+    systemLabel: "POWER",
+    description: "Redundant high-voltage transmission lines on-site, providing mission critical uptime.",
+    icon: Bolt,
+    dataPoints: [
+      { label: "Capacity", value: "115kV / 230kV" },
+      { label: "Redundancy", value: "Dual-Source" },
+      { label: "Provider", value: "Duke Energy" },
+    ],
+  },
+  {
+    title: "Heavy-Lift Runway",
+    systemLabel: "LOGISTICS",
+    description: "One of the longest runways on the East Coast, capable of handling global cargo fleets.",
+    icon: Plane,
+    dataPoints: [
+      { label: "Length", value: "11,500 Feet" },
+      { label: "Load Rating", value: "PCN 100+" },
+      { label: "Status", value: "Operational" },
+    ],
+  },
+  {
+    title: "Gigabit Fiber",
+    systemLabel: "CONNECTIVITY",
+    description: "Redundant Tier-1 dark fiber network with multiple carrier options for maximum uptime.",
+    icon: Wifi,
+    dataPoints: [
+      { label: "Type", value: "Dark Fiber" },
+      { label: "Speed", value: "1 Gbps - 100 Gbps+" },
+      { label: "Providers", value: "CenturyLink and Spectrum" },
+    ],
+  },
+  {
+    title: "Water System",
+    systemLabel: "WATER & SEWER",
+    description: "Robust water and sewer infrastructure designed to support large scale industrial operations.",
+    icon: Droplets,
+    dataPoints: [
+      { label: "Water Main", value: "2.0 Million GPD" },
+      { label: "Wastewater Treatment", value: "1.5 Million GPD" },
+      { label: "Fire Protection", value: "High-pressure looped" },
+    ],
+  }
+];
 interface PropertyDetailsDrawerProps {
     property: IndustrialProperty;
     onClose: () => void;
@@ -96,17 +143,20 @@ const MapSection: React.FC = () => {
     const [selectedProperty, setSelectedProperty] = useState<IndustrialProperty | null>(null);
 
     return (
-        <section id='site-selection' className="flex flex-col gap-4 items-center overflow-hidden  p-0 py-[8vh] bg-radial-[at_25%_25%] from-slate-50 to-slate-200 to-75% h-full md:h-screen">
-            <WordPullUp words='Site Selection' className='text-5xl text-slate-800 py-8' />
+        <section id='site-selection' className="flex flex-col gap-4 items-center overflow-hidden  p-0 py-[8vh] bg-radial-[at_25%_25%] from-slate-50 to-slate-200 to-75% h-full">
+            <WordPullUp words='Technical Infrastructure & Capability Specs' className='text-5xl text-slate-800 py-4 text-center' />
             <div id="copy"
-                className="flex flex-col gap-4 md:w-5xl 2xl:w-7xl mx-auto p-0 ">
-                <p className='text-2xl text-neutral-800 pb-10'>At NCGTP, site selection isn&apos;t a guessing game it&apos;s a launchpad. Our industrial sites and buildings are fully equipped with the infrastructure you need to hit the ground running. From precision utility planning to high-speed telecommunications, every detail is engineered for operational excellence. </p>
-                {/* <Button variant="outline" className="w-max text-slate-800 border-slate-800 hover:bg-slate-100" onClick={()=>handleExploreClick()}>Explore Available Sites</Button> */}
-                {/* <a className="px-4 py-3 bg-blue-900 text-slate-50 text-lg hover:bg-slate-50 hover:text-blue-900 border-2 border-blue-900 transition-colors duration-300 rounded-2xl w-fit" href="https://properties.zoomprospector.com/NCGLOBALTRANSPARK?page=1&s%5bSortDirection%5d=true&s%5bradiusLat%5d=0&s%5bSizeUnits%5d=1&s%5bradius%5d=0&s%5bradiusLng%5d=0&s%5bSortBy%5d=featured&s%5bAttributes%5d=1324%3A%5B%3D%5D1">Explore Available Sites</a> */}
+                className="flex flex-col gap-4 md:w-5xl 2xl:w-7xl mx-auto p-0 text-center ">
+                <p className='text-2xl text-neutral-800 pb-10 text-balance'>The foundation for your world class facility is already in the ground. Eliminate the 18-month "utility lag" with shovel-ready technical assets.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-8">
+                {specData.map((spec, idx) => (
+                    <TechSpecCard key={idx} {...spec} />
+                ))}
+                </div>
             </div>
-            <Card className="h-[75vh] md:w-5xl 2xl:w-7xl mx-auto p-0 overflow-hidden">
+            <Card className="h-full min-h-96 md:h-[50vh]  md:w-5xl 2xl:w-7xl mx-auto p-0 overflow-hidden">
                 {/* 35.32561712246613, -77.61504924333079*/}
-                <Map center={[-77.61504924333079, 35.32561712246613]} zoom={13}>
+                <Map center={[-77.61504924333079, 35.32561712246613]} zoom={14}>
                     {properties.map((place: IndustrialProperty) => (
                         <MapMarker
                             key={place.id}
@@ -124,7 +174,11 @@ const MapSection: React.FC = () => {
                                         className="object-contain "
                                     />
                                 </div>
-                                <MarkerLabel position="bottom">{place.title}</MarkerLabel>
+                                <MarkerLabel position="bottom">
+                                    <div className="text-center">
+                                        {place.title}<br />{place.subtitle}
+                                    </div>
+                                </MarkerLabel>
                             </MarkerContent>
                         </MapMarker>
                     ))}

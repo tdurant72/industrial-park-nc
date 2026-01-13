@@ -29,7 +29,7 @@ const partnersList = [
         name: "CrateTech",
         description: "A full service, custom crating and packaging supply company.",
         long: "CrateTech is a full-service, custom crating and packaging supply company dedicated to providing innovative and reliable packaging solutions for a wide range of industries. With a focus on quality and customer satisfaction, CrateTech offers tailored crating services that ensure the safe and secure transportation of valuable and sensitive items. Their expertise includes custom wood, metal, and composite crates designed to meet specific shipping requirements. Committed to sustainability and efficiency, CrateTech combines advanced materials and skilled craftsmanship to deliver packaging solutions that protect products while minimizing environmental impact.",
-        url: "https://cratetech.com/",
+        url: "https://fcapackaging.com/",
         logo: "/images/partners/cratetech-logo.png",
         className: "",
     },

@@ -105,7 +105,7 @@ const Navbar = () => {
                                 })
                             }}
                         >
-                            Contact
+                            Schedule Briefing
                         </button>
                     </div>
                     {/* mobile menu button */}

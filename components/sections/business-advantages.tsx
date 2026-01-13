@@ -64,34 +64,34 @@ const BusinessAdvantages = () => {
 
                 {/* ROW 3: SOCIAL PROOF GRID */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <TestimonialCard description="John Smith Testimonial">
+                    <TestimonialCard description="Jens H. Lund Testimonial">
                         <BentoCard
                             src="/videos/ncgtp-hero.mp4"
-                            img="/images/founders/image-1.jpg"
-                            title="John Smith"
-                            description="Executive Director"
+                            img="/images/founders/Jens-Lund.webp"
+                            title="Jens H. Lund"
+                            description="CEO of DSV"
                             snippet="Saved $2M in year one"
                             isVideo
                         />
                     </TestimonialCard>
 
-                    <TestimonialCard description="Kel Johnson Testimonial">
+                    <TestimonialCard description="Jim Segrave Testimonial">
                         <BentoCard
                             src="/videos/ncgtp-hero.mp4"
-                            img="/images/founders/image-2.jpg"
-                            title="Kel Johnson"
-                            description="Property Manager"
+                            img="/images/founders/Jim-Segrave.webp"
+                            title="Jim Segrave"
+                            description="CEO of Fly Exclusive"
                             snippet="Reduced logistics time by 30%"
                             isVideo
                         />
                     </TestimonialCard>
 
-                    <TestimonialCard description="JB Bento Testimonial">
+                    <TestimonialCard description="Patrick Shanahan Testimonial">
                         <BentoCard
                             src="/videos/ncgtp-hero.mp4"
-                            img="/images/founders/image-4.jpg"
-                            title="JB Bento"
-                            description="CEO of Radiant Technologies"
+                            img="/images/founders/Patrick-Shanahan.webp"
+                            title="Patrick Shanahan"
+                            description="CEO of Spirit AeroSystems"
                             snippet="150% workforce growth"
                             isVideo
                         />

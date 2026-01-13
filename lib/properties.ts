@@ -10,6 +10,7 @@ export interface ContactInfo {
 export interface IndustrialProperty {
     id: string;
     title: string;
+    subtitle?: string;
     slug: string;
     status: 'Available' | 'Under Contract' | 'Developed';
     type: 'Aerospace' | 'Advanced Manufacturing' | 'Logistics' | 'Flex-Space';
@@ -68,7 +69,8 @@ const defaultContact: ContactInfo = {
 export const properties: IndustrialProperty[] = [
     {
         id: "site-7a",
-        title: "Strategic Asset 7A: Runway-Adjacent Aerospace Pad",
+        title: "Strategic Asset 7A: ",
+        subtitle: "Runway-Adjacent Aerospace Pad",
         slug: "runway-adjacent-aerospace-7a",
         status: 'Available',
         type: 'Aerospace',
@@ -112,7 +114,8 @@ export const properties: IndustrialProperty[] = [
     },
     {
         id: "west-side-100",
-        title: "GTP West Side: 100-Acre Advanced Manufacturing Hub",
+        title: "GTP West Side:",
+        subtitle: "100-Acre Advanced Manufacturing Hub",
         slug: "gtp-west-side-100",
         status: 'Available',
         type: 'Advanced Manufacturing',
@@ -148,7 +151,8 @@ export const properties: IndustrialProperty[] = [
     },
     {
         id: "gtp-40-acre",
-        title: "GTP 40: High-Efficiency Flex Development",
+        title: "GTP 40:",
+        subtitle: "40-Acre Multi-Tenant Flex Space",
         slug: "gtp-40-acre",
         status: 'Available',
         type: 'Flex-Space',
