@@ -5,6 +5,7 @@ import { WordPullUp } from "@/components/ui/word-up";
 import NCGTPHeroVideo from "@/components/ncgtp-hero-video";
 import MotionButton from "@/components/motion/motion-button";
 const Hero = () => {
+    const currentYear = new Date().getFullYear();
     return (
         <section id="hero-section" className="flex flex-col gap-4 h-full md:h-[90vh] pt-[8vh] pb-0 w-full md:w-5xl 2xl:w-7xl mx-auto">
             <div className="flex flex-col md:flex-row gap-2 md:gap-6 h-full">
@@ -19,6 +20,7 @@ const Hero = () => {
                             <div className="h-6 w-px bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors cursor-pointer" />
                             <FaCalendarAlt className="size-5" />
                         </button>
+                        <p className="text-slate-600 text-xs py-2 max-w-[430px] text-balance text-center">Includes {currentYear} Infrastructure Master Plan, FTZ Tax Breakdown, a Customized Incentive Breakdown and Site-Specific Utility Map.</p>
                     </div>
                 </div>
                 <div id="right" className="flex flex-col md:basis-1/2">

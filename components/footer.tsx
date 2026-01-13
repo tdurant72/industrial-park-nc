@@ -53,7 +53,7 @@ const Footer = () => {
                             <p className="text-amber-500 font-bold uppercase tracking-widest text-xs mb-4 italic">Get in Touch</p>
                             <h2 className="text-4xl font-bold mb-6 tracking-tight">Schedule An Executive Briefing</h2>
                             <a
-                                href="mailto:hi@email.com"
+                                href="mailto:executive-director@ncgtp.com"
                                 className="text-2xl font-medium hover:text-amber-500 transition-colors inline-block mb-10"
                             >
                                 Director of Global Logistics

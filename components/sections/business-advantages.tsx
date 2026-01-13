@@ -70,7 +70,7 @@ const BusinessAdvantages = () => {
                             img="/images/founders/Jens-Lund.webp"
                             title="Jens H. Lund"
                             description="CEO of DSV"
-                            snippet="Saved $2M in year one"
+                            snippet="Utilizing the on-site Foreign Trade Zone (FTZ #214) and direct Class I rail connectivity, we successfully bypassed coastal port congestion to streamline Tier 1 aerospace supply chains."
                             isVideo
                         />
                     </TestimonialCard>
@@ -80,8 +80,8 @@ const BusinessAdvantages = () => {
                             src="/videos/ncgtp-hero.mp4"
                             img="/images/founders/Jim-Segrave.webp"
                             title="Jim Segrave"
-                            description="CEO of Fly Exclusive"
-                            snippet="Reduced logistics time by 30%"
+                            description="CEO of flyExclusive"
+                            snippet="Anchored by our 145,000 sq. ft. headquarters and $30M Pilot Training Center, our NCGTP footprint now supports a fleet of 100+ aircraft and over 800 aviation professionals."
                             isVideo
                         />
                     </TestimonialCard>
@@ -92,7 +92,7 @@ const BusinessAdvantages = () => {
                             img="/images/founders/Patrick-Shanahan.webp"
                             title="Patrick Shanahan"
                             description="CEO of Spirit AeroSystems"
-                            snippet="150% workforce growth"
+                            snippet="We had 150% workforce growth across our 625,000 sq. ft. composite center"
                             isVideo
                         />
                     </TestimonialCard>
