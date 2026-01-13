@@ -147,7 +147,7 @@ const MapSection: React.FC = () => {
             <WordPullUp words='Technical Infrastructure & Capability Specs' className='text-5xl text-slate-800 py-4 text-center' />
             <div id="copy"
                 className="flex flex-col gap-4 md:w-5xl 2xl:w-7xl mx-auto p-0 text-center ">
-                <p className='text-2xl text-neutral-800 pb-10 text-balance'>The foundation for your world class facility is already in the ground. Eliminate the 18-month "utility lag" with shovel-ready technical assets.</p>
+                <p className='text-2xl text-neutral-800 pb-10 text-balance'>The foundation for your world class facility is already in the ground. Eliminate the 18-month  &quot;utility lag&quot; with shovel-ready technical assets.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-8">
                 {specData.map((spec, idx) => (
                     <TechSpecCard key={idx} {...spec} />
