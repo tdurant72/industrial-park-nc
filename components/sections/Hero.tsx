@@ -1,5 +1,3 @@
-"use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { PiPlayFill } from "react-icons/pi";
 import { FaCalendarAlt } from "react-icons/fa";
