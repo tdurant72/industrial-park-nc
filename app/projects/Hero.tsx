@@ -310,7 +310,7 @@ const Hero = () => {
       } as TabCounts,
       categoryCounts: categoryCount,
     };
-  }, []);
+  }, [clients, projects]);
 
   // Tab navigation options
   const tabs = [

@@ -39,8 +39,12 @@ export default function ConfidentialInquiryForm() {
       });
       if (!res.ok) throw new Error("Submission failed");
       setSubmitted(true);
-    } catch (err: any) {
-      setError(err.message || "Unknown error");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message || "Unknown error");
+      } else {
+        setError("Unknown error");
+      }
     } finally {
       setSubmitting(false);
     }
