@@ -28,7 +28,7 @@ const BentoCard = ({
     }
   }
   return (
-    <motion.div variants={variants} initial="hidden" animate="visible" className="grid grid-cols-4 grid-rows-4 h-full overflow-hidden border border-slate-800 rounded-3xl bg-slate-900 shadow-2xl hover:border-amber-500/30 transition-colors duration-500 group/card">
+    <motion.div variants={variants} initial="hidden" animate="visible" className="grid grid-cols-4 grid-rows-4 h-full overflow-hidden border border-slate-800 rounded-3xl bg-slate-900 shadow-2xl hover:border-amber-500/30 transition-colors duration-500 group/card lg:max-w-[400px]">
       {isPlaying ? (
         <video
           ref={videoRef}
@@ -37,17 +37,10 @@ const BentoCard = ({
         />
       ) : (
         <>
-          {/* <div
-            className={`col-start-1 row-start-4 row-span-1 z-50  rounded-tr-[50px] bg-white/50 flex items-end py-2 gap-4 md:gap-7 
-              }`}
-          >
-            
-          </div> */}
-
           <div className="col-span-4 row-span-4 col-start-1 col-end-5 row-start-1 relative">
             <Image
               src={img}
-              className="object-cover object-center h-full w-full min-h-[400px]"
+              className="object-cover object-center h-full w-full  min-w-2xs"
               alt={title}
               width={566}
               height={400}

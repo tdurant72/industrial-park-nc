@@ -98,7 +98,7 @@ const Faq = () => {
 
   return (
     <section id="faq" className="py-24 bg-slate-50">
-      <div className="container mx-auto px-6 md:w-5xl 2xl:w-7xl">
+      <div className="container max-w-7xl mx-auto px-6">
         <WordPullUp words='Frequently Asked Questions' className="text-4xl md:text-5xl font-bold mb-16 text-slate-900 text-center" />
         <div className="space-y-2">
           {faqData.map((item, index) => (

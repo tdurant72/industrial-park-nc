@@ -5,7 +5,7 @@ import { CheckCircle2 } from "lucide-react";
 const BusinessAdvantages = () => {
     return (
         <section id="business-advantages" className="w-full -mx-6 md:mx-0 py-24 bg-slate-950 text-white">
-            <div className="mx-auto px-6 md:w-5xl 2xl:w-7xl">
+            <div className="mx-auto px-6 w-full container max-w-7xl">
 
                 {/* ROW 1: THE LOGIC RIBBON */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
@@ -63,7 +63,7 @@ const BusinessAdvantages = () => {
                 </div>
 
                 {/* ROW 3: SOCIAL PROOF GRID */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-flow-row-dense grid-col-1 md:grid-cols-2 xl:grid-cols-3 gap-2 lg:gap-4 2xl:gap-8">
                     <TestimonialCard description="Jens H. Lund Testimonial">
                         <BentoCard
                             src="/videos/ncgtp-hero.mp4"

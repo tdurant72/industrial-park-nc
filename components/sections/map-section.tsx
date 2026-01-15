@@ -144,17 +144,18 @@ const MapSection: React.FC = () => {
 
     return (
         <section id='site-selection' className="flex flex-col gap-4 items-center overflow-hidden  p-0 py-[8vh] bg-radial-[at_25%_25%] from-slate-50 to-slate-200 to-75% h-full">
+            <div className="container max-w-7xl">
             <WordPullUp words='Technical Infrastructure & Capability Specs' className='text-5xl text-slate-800 py-4 text-center' />
             <div id="copy"
-                className="flex flex-col gap-4 md:w-5xl 2xl:w-7xl mx-auto p-0 text-center ">
+                className="flex flex-col gap-4 mx-auto p-0 text-center ">
                 <p className='text-2xl text-neutral-800 pb-10 text-balance'>The foundation for your world class facility is already in the ground. Eliminate the 18-month  &quot;utility lag&quot; with shovel-ready technical assets.</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-flow-row-dense gap-6 p-8">
                 {specData.map((spec, idx) => (
                     <TechSpecCard key={idx} {...spec} />
                 ))}
                 </div>
             </div>
-            <Card className="h-full min-h-96 md:h-[50vh]  md:w-5xl 2xl:w-7xl mx-auto p-0 overflow-hidden">
+            <Card className="h-full min-h-96 md:h-[50vh] md:w-4xl  lg:w-5xl 2xl:w-7xl mx-auto p-0 overflow-hidden">
                 {/* 35.32561712246613, -77.61504924333079*/}
                 <Map center={[-77.61504924333079, 35.32561712246613]} zoom={14}>
                     {properties.map((place: IndustrialProperty) => (
@@ -208,6 +209,7 @@ const MapSection: React.FC = () => {
                     )}
                 </AnimatePresence>
             </Card>
+            </div>
         </section>
     );
 };

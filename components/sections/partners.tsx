@@ -4,7 +4,7 @@ import { WordPullUp } from "@/components/ui/word-up";
 export function Partners() {
     return (
         <section className="w-full bg-slate-950 py-32">
-            <div className="container mx-auto px-6 md:w-5xl 2xl:w-7xl">
+            <div className="container max-w-7xl mx-auto px-6 ">
                 <div className="mb-16 text-center">
                     <WordPullUp className="text-4xl md:text-5xl font-bold text-white mb-6 text-center" words="Some of our partners" />
                     <p className="text-slate-400 text-xl md:text-2xl max-w-3xl leading-relaxed mx-auto">

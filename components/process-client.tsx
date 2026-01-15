@@ -31,7 +31,7 @@ const ProcessClient = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col md:flex-row flex-wrap gap-6 mx-auto justify-center">
+            className="flex flex-col md:flex-row flex-wrap gap-2 md:gap-4 lg:gap-6 mx-auto justify-center">
             <ProcessCard
                 imgSrc="/images/ncgtp/site-card.webp"
                 imgAlt="Site card"

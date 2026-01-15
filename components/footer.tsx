@@ -18,6 +18,7 @@ const Footer = () => {
         { href: '/about', name: 'Partners' },
         { href: '/site-selection', name: 'Site Selection' },
         { href: '/news', name: 'News' },
+        { href: '/confidential-inquiry', name: 'Confidential Site Evaluation' },
     ];
 
     const legalLinks = [
@@ -45,20 +46,21 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
         <section id="footer" className="w-full bg-slate-950 text-white">
-            <footer className="py-24 px-6 md:w-5xl 2xl:w-7xl md:mx-auto">
+            <footer className="py-24 px-6 container
+             mx-auto">
                 <div className="mx-auto" id="contact">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-24">
                         {/* left side */}
                         <div>
                             <p className="text-amber-500 font-bold uppercase tracking-widest text-xs mb-4 italic">Get in Touch</p>
-                            <h2 className="text-4xl font-bold mb-6 tracking-tight">Schedule An Executive Briefing</h2>
+                            <h2 className="text-xl lg:text-4xl font-bold mb-6 tracking-tight">Schedule An Executive Briefing</h2>
                             <a
                                 href="mailto:executive-director@ncgtp.com"
-                                className="text-2xl font-medium hover:text-amber-500 transition-colors inline-block mb-10"
+                                className="text -lg lg:text-2xl font-medium hover:text-amber-500 transition-colors inline-block mb-10"
                             >
                                 Director of Global Logistics
                             </a>
-                            <p className="text-slate-400 text-lg leading-relaxed">
+                            <p className="text-slate-400 text-lg/tight leading-relaxed">
                                 2780 Jetport Road, Suite A
                                 <br />
                                 Kinston, NC 28504
@@ -73,7 +75,7 @@ const Footer = () => {
                                     <a
                                         key={link.name}
                                         href={link.href}
-                                        className="block text-slate-300 hover:text-white transition-colors text-lg"
+                                        className="block text-slate-300 hover:text-white transition-colors text-base lg:text-lg"
                                     >
                                         {link.name}
                                     </a>
@@ -113,7 +115,7 @@ const Footer = () => {
                                     <button
                                         type="submit"
                                         className="w-full bg-amber-500
-                   text-slate-950 font-bold px-6 py-4 rounded-xl hover:bg-amber-400 transition-all duration-300 shadow-lg shadow-amber-500/10"
+                   text-slate-950 font-bold px-4 lg:px-6 py-2 lg:py-4 rounded-xl hover:bg-amber-400 transition-all duration-300 shadow-lg shadow-amber-500/10"
                                     >
                                         Subscribe to Briefings
                                     </button>

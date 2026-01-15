@@ -72,6 +72,7 @@ const StickyExpertButton = () => {
                       alt="Jeremy Stroud"
                       fill
                       className="object-cover"
+                      sizes="(max-width: 768px) 56px, (max-width: 1200px) 64px, 64px"
                     />
                   </div>
                   <div>

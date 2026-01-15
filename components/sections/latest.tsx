@@ -9,7 +9,7 @@ const Latest = () => {
                     backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
                     backgroundSize: '40px 40px'
                 }} />
-            <div className="container mx-auto px-6 md:w-5xl 2xl:w-7xl relative z-10">
+            <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 <div className="mb-20 text-center">
                     <WordPullUp
                         words="Latest News"

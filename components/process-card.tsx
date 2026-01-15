@@ -28,7 +28,7 @@ const ProcessCard = ({ imgSrc, imgAlt, cardNumber, title, description, className
                 className="mb-6 rounded-lg shadow-lg  object-cover object-center"
             />
             <div>
-                <h4 className="text-slate-800 text-xl md:text-2xl font-semibold  my-3 text-center">{title}</h4>
+                <h4 className="text-slate-800 text-xl md:text-2xl/tight font-semibold  my-3 text-center">{title}</h4>
                 <p className="text-slate-700 text-base md:text-lg text-balance text-center">{description}</p>
             </div>
         </motion.div>

@@ -31,7 +31,7 @@ const IncentiveCardSection = () => {
     });
     return (
         <>
-            <div className="flex flex-col md:flex-row md:gap-4 mt-2 md:-mt-52">
+            <div className="flex flex-col md:flex-row md:gap-4 mt-2 xl:-mt-44">
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
